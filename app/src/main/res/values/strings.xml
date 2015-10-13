@@ -1,8 +1,31 @@
 <resources>
-    <string name="app_name">mubsone</string>
-
+    //general names
+    <string name="app_name">Mubsone</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-
     <string name="action_settings">Settings</string>
+    <string name="cover_page">COVER PAGE</string>
+
+    //for the user name interface
+    <string name="user_name">username</string>
+    <string name="password">password</string>
+    <string name="forgot_password">Forgot your password?</string>
+    <string name="facebook_sign">Log in with Facebook</string>
+    <string name="sign_up">sign up</string>
+    <string name="log_in">log in</string>
+
+    //for the second layout (for the scroll_page)
+    <string name="rates">Rates</string>
+    <string name="views">views</string>
+
+    //project in progress
+    <string name="progress">Project in progress</string>
+    <string name="press_back">Please press back</string>
+
+    //just for developers
+    <string name="dev">Just for developers</string>
+    <string name="next_layout_dev">See the next layout</string>
+
+
+
 </resources>

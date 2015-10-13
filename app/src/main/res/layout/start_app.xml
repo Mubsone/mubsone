@@ -85,7 +85,7 @@
             android:background="@drawable/white_bar"
             android:textColorHint="@color/black"
             android:textColor="@color/black"
-            android:textAlignment="center"
+            android:textAlignment="inherit"
             android:paddingLeft="8dp" />
 
         <Button
