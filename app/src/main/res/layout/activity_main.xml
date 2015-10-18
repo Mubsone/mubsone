@@ -9,7 +9,7 @@
         android:layout_height="match_parent" />
 
     <android.support.design.widget.NavigationView
-        android:layout_width="55dp"
+        android:layout_width="50dp"
         android:layout_height="match_parent"
         android:id="@+id/nav_view"
         android:background="@drawable/side_nav_under"
