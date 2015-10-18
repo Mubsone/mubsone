@@ -10,6 +10,7 @@
     tools:showIn="@layout/activity_notifications"
     tools:context="com.example.mubsone.mubsone.Notifications">
 
+
     <ListView
         android:id="@+id/android:list"
         android:layout_width="fill_parent"
