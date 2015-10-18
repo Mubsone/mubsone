@@ -26,6 +26,10 @@
     <string name="dev">Just for developers</string>
     <string name="next_layout_dev">See the next layout</string>
     <string name="title_activity_notifications">Notifications</string>
+    <string name="title_activity_my_profile">My profile</string>
+
+
+    //for the action bar
 
 
 
