@@ -2,8 +2,6 @@ package com.example.mubsone.mubsone;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -21,17 +19,11 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //full screen aplication
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
-        toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -83,7 +75,7 @@ public class MainActivity extends AppCompatActivity
             startActivity(next_layout);
 
         } else if (id == R.id.nav_myprofil) {
-            Intent next_layout = new Intent(getApplicationContext(), Myprofile.class);
+            Intent next_layout = new Intent(getApplicationContext(), MyProfile.class);
             onPause();
             startActivity(next_layout);
         } else if (id == R.id.nav_notification) {
@@ -92,7 +84,7 @@ public class MainActivity extends AppCompatActivity
             startActivity(next_layout);
 
         } else if (id == R.id.nav_logout) {
-            Intent next_layout = new Intent(getApplicationContext(), Log_in.class);
+            Intent next_layout = new Intent(getApplicationContext(), LogIn.class);
             onPause();
             startActivity(next_layout);
 

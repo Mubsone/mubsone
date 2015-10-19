@@ -19,7 +19,7 @@
         android:theme="@style/AppTheme" >
         //the applications that will work on you phone
         <activity
-            android:name=".Log_in"
+            android:name=".LogIn"
             android:label="Mubsone"
             android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
@@ -39,7 +39,7 @@
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
         <activity
-            android:name=".Myprofile"
+            android:name=".MyProfile"
             android:label="@string/title_activity_my_profile"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme" >

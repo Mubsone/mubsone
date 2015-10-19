@@ -10,7 +10,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class Log_in extends AppCompatActivity {
+public class LogIn extends AppCompatActivity {
     //declare all the TextViewer on the main page
     private TextView [] id_text= new TextView [4];
 
