@@ -27,15 +27,6 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent notifications = new Intent(getApplicationContext(), Notifications.class);
-                startActivity(notifications);
-            }
-        });
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -87,14 +78,23 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_search) {
             // Handle the camera action
         } else if (id == R.id.nav_newsfeed) {
+            Intent next_layout = new Intent(getApplicationContext(), MainActivity.class);
+            onPause();
+            startActivity(next_layout);
 
         } else if (id == R.id.nav_myprofil) {
             Intent next_layout = new Intent(getApplicationContext(), Myprofile.class);
             onPause();
             startActivity(next_layout);
         } else if (id == R.id.nav_notification) {
+            Intent next_layout = new Intent(getApplicationContext(), Notifications.class);
+            onPause();
+            startActivity(next_layout);
 
         } else if (id == R.id.nav_logout) {
+            Intent next_layout = new Intent(getApplicationContext(), Log_in.class);
+            onPause();
+            startActivity(next_layout);
 
         } else if (id == R.id.nav_marketplace) {
 
