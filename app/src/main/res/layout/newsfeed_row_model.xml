@@ -12,24 +12,23 @@
         android:layout_centerHorizontal="true" />
     <ImageButton
         android:id="@+id/userImageButton"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginTop="20dp"
         android:src="@drawable/user_icon"
         android:layout_alignParentTop="true"
         android:layout_alignLeft="@+id/videoView1"
-        android:layout_alignStart="@+id/videoView1" />
+        android:layout_alignStart="@+id/videoView1"
+        android:background="@color/white"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Username"
-        android:layout_alignTop="@+id/userImageButton"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="15dp"
-        android:layout_marginRight="250dp"
         android:textSize="@dimen/activity_horizontal_margin"
-        android:id="@+id/username" />
+        android:id="@+id/username"
+        android:layout_alignTop="@+id/userImageButton"
+        android:layout_alignLeft="@+id/songTitle"
+        android:layout_alignStart="@+id/songTitle" />
 
     <RatingBar
         android:layout_width="wrap_content"
@@ -61,62 +60,54 @@
 
     <ImageButton
         android:id="@+id/iconDescription"
-        android:layout_width="40dp"
-        android:layout_height="20dp"
-        android:src="@drawable/description_icon"
-        android:layout_centerVertical="true"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@mipmap/ic_new_description"
+        android:layout_below="@+id/videoView1"
         android:layout_alignLeft="@+id/videoView1"
-        android:layout_alignStart="@+id/videoView1" />
-    TextView
+        android:layout_alignStart="@+id/videoView1"
+        android:background="@color/white"/>
+    <TextView
         android:id="@+id/songTitle"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="Song Title"
-        android:layout_alignTop="@+id/iconDescription"
-        android:layout_marginLeft="60dp"
-        android:layout_marginStart="60dp"
-        android:textSize="@dimen/activity_horizontal_margin"/>
+        android:textSize="@dimen/activity_horizontal_margin"
+        android:layout_below="@+id/videoView1"
+        android:layout_toRightOf="@+id/iconDescription"
+        android:layout_toEndOf="@+id/iconDescription"
+        android:layout_marginLeft="28dp"
+        android:layout_marginStart="28dp" />
 
     <ImageButton
         android:id="@+id/iconComment"
-        android:layout_width="40dp"
-        android:layout_height="20dp"
-        android:src="@drawable/comment_icon"
-        android:layout_centerVertical="true"
-        android:layout_toLeftOf="@+id/rates"
-        android:layout_toStartOf="@+id/rates" />
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@mipmap/ic_new_commnet"
+        android:layout_below="@+id/videoView1"
+        android:layout_toLeftOf="@+id/imageButton"
+        android:layout_toStartOf="@+id/imageButton"
+        android:background="@color/white"/>
 
     <ImageButton
         android:id="@+id/iconView"
-        android:layout_width="40dp"
-        android:layout_height="20dp"
-        android:src="@drawable/viewer_icon"
-        android:layout_alignTop="@+id/iconComment"
-        android:layout_alignLeft="@+id/ratingBar"
-        android:layout_alignStart="@+id/ratingBar" />
-    <!--Probelme solve here Bra-->
-    <ImageButton
-        android:id="@+id/iconShare"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/imageButton"
-        android:layout_alignLeft="@+id/iconView"
-        android:layout_alignStart="@+id/iconView"
-        android:layout_marginTop="61dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@mipmap/ic_new_viewer"
+        android:layout_below="@+id/videoView1"
         android:layout_toLeftOf="@+id/iconComment"
         android:layout_toStartOf="@+id/iconComment"
-        android:src="@mipmap/ic_new_commnet"
-        android:background="@android:color/transparent" />
+        android:background="@color/white"/>
 
     <ImageButton
-        android:layout_width="350dp"
-        android:layout_height="5dp"
-        android:src="@drawable/separator_icon"
-        android:layout_below="@+id/iconDescription"
-        android:layout_alignLeft="@+id/iconDescription"
-        android:layout_alignStart="@+id/iconDescription"
-        android:layout_marginTop="27dp"
-        android:id="@+id/imageButton" />
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@mipmap/ic_new_share"
+        android:id="@+id/imageButton"
+        android:layout_below="@+id/videoView1"
+        android:layout_alignRight="@+id/rates"
+        android:layout_alignEnd="@+id/rates"
+        android:background="@color/white"/>
 
 
 </RelativeLayout>

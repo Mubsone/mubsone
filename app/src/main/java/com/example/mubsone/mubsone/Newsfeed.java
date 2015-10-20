@@ -16,7 +16,7 @@ public class Newsfeed extends ListActivity
     String [] username ={"Username1", "Username2", "Username3", "Username4"};
     String [] songTitle ={"Grizzly Bear", "Hotline Bling", "I ran away", "Sex on fire"};
     String [] rating ={"5", "3.5", "4", "3"};
-    int [] images = {R.drawable.description_icon, R.drawable.share_icon, R.drawable.user_icon, R.drawable.viewer_icon};
+    int [] images = {R.mipmap.ic_new_description, R.mipmap.ic_new_commnet, R.mipmap.ic_new_share, R.mipmap.ic_new_viewer};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //full screen aplication
