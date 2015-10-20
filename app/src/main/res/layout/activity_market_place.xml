@@ -6,10 +6,10 @@
     android:fitsSystemWindows="true" tools:openDrawer="start"
     android:background="@color/white" >
 
-        <include
-            android:id="@+id/toolbarNotifications"
-            layout="@layout/toolbar_of_notifications" android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+    <include
+        android:id="@+id/toolbarMarketPlace"
+        layout="@layout/toolbar_of_marketplace" android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
     <android.support.design.widget.NavigationView
         android:layout_width="60dp"

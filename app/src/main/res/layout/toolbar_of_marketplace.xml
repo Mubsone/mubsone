@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" android:fitsSystemWindows="true"
-    tools:context=".Notifications">
+    tools:context=".MarketPlace">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -12,10 +12,10 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
-        app:title="Notifications"
+        app:title="Marketplace"
         app:titleTextColor="@color/white">
     </android.support.v7.widget.Toolbar>
 
-    <include layout="@layout/content_notifications" />
+    <include layout="@layout/content_market_place" />
 
 </android.support.design.widget.CoordinatorLayout>

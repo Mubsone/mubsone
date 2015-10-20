@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <VideoView
+        android:id="@+id/videoView1"
+        android:layout_width="350dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="70dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+    <ImageButton
+        android:id="@+id/userImageButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/user_icon"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/videoView1"
+        android:layout_alignStart="@+id/videoView1"
+        android:background="@color/white"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Username"
+        android:textSize="@dimen/activity_horizontal_margin"
+        android:id="@+id/username"
+        android:layout_alignTop="@+id/userImageButton"
+        android:layout_alignLeft="@+id/songTitle"
+        android:layout_alignStart="@+id/songTitle" />
+
+    <RatingBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ratingBar"
+        style = "?android:attr/ratingBarStyleSmall"
+        android:numStars = "5"
+        android:rating   = "5"
+        android:stepSize="0.1"
+        android:progressTint="@color/colorPrimary"
+        android:backgroundTint="@color/colorPrimary"
+        android:secondaryProgressTint="@color/colorPrimary"
+        android:layout_marginRight="55dp"
+        android:layout_marginEnd="55dp"
+        android:layout_alignBottom="@+id/username"
+        android:layout_alignRight="@+id/videoView1"
+        android:layout_alignEnd="@+id/videoView1" />
+
+    <TextView
+        android:layout_width="50sp"
+        android:layout_height="wrap_content"
+        android:text="Rates"
+        android:id="@+id/rates"
+        android:layout_alignRight="@+id/videoView1"
+        android:layout_alignEnd="@+id/videoView1"
+        android:layout_alignBottom="@+id/userImageButton"
+        android:layout_alignTop="@+id/ratingBar"
+        android:textSize="@dimen/activity_horizontal_margin"/>
+
+    <ImageButton
+        android:id="@+id/iconDescription"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@mipmap/ic_new_description"
+        android:layout_below="@+id/videoView1"
+        android:layout_alignLeft="@+id/videoView1"
+        android:layout_alignStart="@+id/videoView1"
+        android:background="@color/white"/>
+    <TextView
+        android:id="@+id/songTitle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Song Title"
+        android:textSize="@dimen/activity_horizontal_margin"
+        android:layout_below="@+id/videoView1"
+        android:layout_toRightOf="@+id/iconDescription"
+        android:layout_toEndOf="@+id/iconDescription"
+        android:layout_marginLeft="28dp"
+        android:layout_marginStart="28dp" />
+
+    <ImageButton
+        android:id="@+id/iconComment"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@mipmap/ic_new_commnet"
+        android:layout_below="@+id/videoView1"
+        android:layout_toLeftOf="@+id/imageButton"
+        android:layout_toStartOf="@+id/imageButton"
+        android:background="@color/white"/>
+
+    <ImageButton
+        android:id="@+id/iconView"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@mipmap/ic_new_viewer"
+        android:layout_below="@+id/videoView1"
+        android:layout_toLeftOf="@+id/iconComment"
+        android:layout_toStartOf="@+id/iconComment"
+        android:background="@color/white"/>
+
+    <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@mipmap/ic_new_share"
+        android:id="@+id/imageButton"
+        android:layout_below="@+id/videoView1"
+        android:layout_alignRight="@+id/rates"
+        android:layout_alignEnd="@+id/rates"
+        android:background="@color/white"/>
+
+
+</RelativeLayout>

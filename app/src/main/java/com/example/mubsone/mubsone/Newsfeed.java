@@ -1,27 +1,30 @@
 package com.example.mubsone.mubsone;
 
+import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.Window;
-import android.view.WindowManager;
 
-public class MainActivity extends AppCompatActivity
+public class Newsfeed extends ListActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    String [] username ={"Username1", "Username2", "Username3", "Username4"};
+    String [] songTitle ={"Grizzly Bear", "Hotline Bling", "I ran away", "Sex on fire"};
+    String [] rating ={"5", "3.5", "4", "3"};
+    int [] images = {R.mipmap.ic_new_description, R.mipmap.ic_new_commnet, R.mipmap.ic_new_share, R.mipmap.ic_new_viewer};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //full screen aplication
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setContentView(R.layout.activity_newsfeed);
+
+        NewsfeedListAdapter nwsfListAdapter = new NewsfeedListAdapter(this, username, songTitle, rating, images);
+        setListAdapter(nwsfListAdapter);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
@@ -70,7 +73,7 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_search) {
             // Handle the camera action
         } else if (id == R.id.nav_newsfeed) {
-            Intent next_layout = new Intent(getApplicationContext(), MainActivity.class);
+            Intent next_layout = new Intent(getApplicationContext(), Newsfeed.class);
             onPause();
             startActivity(next_layout);
 
@@ -89,7 +92,9 @@ public class MainActivity extends AppCompatActivity
             startActivity(next_layout);
 
         } else if (id == R.id.nav_marketplace) {
-
+            Intent next_layout = new Intent(getApplicationContext(), MarketPlace.class);
+            onPause();
+            startActivity(next_layout);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
