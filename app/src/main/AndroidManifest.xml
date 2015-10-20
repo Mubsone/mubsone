@@ -29,7 +29,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".Newsfeed"
             android:label="mubsone"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
@@ -41,11 +41,20 @@
         <activity
             android:name=".MyProfile"
             android:label="@string/title_activity_my_profile"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".Newsfeed"
             android:theme="@style/AppTheme" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.mubsone.mubsone.MainActivity" />
+                android:value=".Newsfeed" />
+        </activity>
+        <activity
+            android:name=".Settings"
+            android:label="@string/title_activity_settings" >
+        </activity>
+        <activity
+            android:name=".MarketPlace"
+            android:label="@string/title_activity_market_place"
+            android:theme="@style/AppTheme" >
         </activity>
     </application>
 

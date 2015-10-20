@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <VideoView
+        android:id="@+id/videoView1"
+        android:layout_width="350dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="70dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+    <ImageButton
+        android:id="@+id/userImageButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/user_icon"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/videoView1"
+        android:layout_alignStart="@+id/videoView1" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Username"
+        android:layout_alignTop="@+id/userImageButton"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="250dp"
+        android:textSize="@dimen/activity_horizontal_margin"
+        android:id="@+id/username" />
+
+    <RatingBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ratingBar"
+        style = "?android:attr/ratingBarStyleSmall"
+        android:numStars = "5"
+        android:rating   = "5"
+        android:stepSize="0.1"
+        android:progressTint="@color/colorPrimary"
+        android:backgroundTint="@color/colorPrimary"
+        android:secondaryProgressTint="@color/colorPrimary"
+        android:layout_marginRight="55dp"
+        android:layout_marginEnd="55dp"
+        android:layout_alignBottom="@+id/username"
+        android:layout_alignRight="@+id/videoView1"
+        android:layout_alignEnd="@+id/videoView1" />
+
+    <TextView
+        android:layout_width="50sp"
+        android:layout_height="wrap_content"
+        android:text="Rates"
+        android:id="@+id/rates"
+        android:layout_alignRight="@+id/videoView1"
+        android:layout_alignEnd="@+id/videoView1"
+        android:layout_alignBottom="@+id/userImageButton"
+        android:layout_alignTop="@+id/ratingBar"
+        android:textSize="@dimen/activity_horizontal_margin"/>
+
+    <ImageButton
+        android:id="@+id/iconDescription"
+        android:layout_width="40dp"
+        android:layout_height="20dp"
+        android:src="@drawable/description_icon"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/videoView1"
+        android:layout_alignStart="@+id/videoView1" />
+    <TextView
+        android:id="@+id/songTitle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Song Title"
+        android:layout_alignTop="@+id/iconDescription"
+        android:layout_marginLeft="60dp"
+        android:layout_marginStart="60dp"
+        android:textSize="@dimen/activity_horizontal_margin"/>
+
+    <ImageButton
+        android:id="@+id/iconComment"
+        android:layout_width="40dp"
+        android:layout_height="20dp"
+        android:src="@drawable/comment_icon"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/rates"
+        android:layout_toStartOf="@+id/rates" />
+
+    <ImageButton
+        android:id="@+id/iconView"
+        android:layout_width="40dp"
+        android:layout_height="20dp"
+        android:src="@drawable/viewer_icon"
+        android:layout_alignTop="@+id/iconComment"
+        android:layout_alignLeft="@+id/ratingBar"
+        android:layout_alignStart="@+id/ratingBar" />
+
+    <ImageButton
+        android:id="@+id/iconShare"
+        android:layout_width="40dp"
+        android:layout_height="20dp"
+        android:src="@drawable/share_icon"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+    <ImageButton
+        android:layout_width="350dp"
+        android:layout_height="5dp"
+        android:src="@drawable/separator_icon"
+        android:layout_below="@+id/iconDescription"
+        android:layout_alignLeft="@+id/iconDescription"
+        android:layout_alignStart="@+id/iconDescription"
+        android:layout_marginTop="27dp"
+        android:id="@+id/imageButton" />
+
+
+</RelativeLayout>

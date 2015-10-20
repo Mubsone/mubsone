@@ -47,7 +47,7 @@ public class LogIn extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //start a new layout for you
-                Intent next_layout = new Intent(getApplicationContext(), MainActivity.class);
+                Intent next_layout = new Intent(getApplicationContext(), Newsfeed.class);
                 onPause();
                 startActivity(next_layout);
             }
