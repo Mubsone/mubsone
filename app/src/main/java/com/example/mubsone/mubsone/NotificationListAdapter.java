@@ -28,26 +28,43 @@ public class NotificationListAdapter extends ArrayAdapter<String> {
 
     //This inner class is holding our views
     public class ViewHolder{
-        TextView nameTv;
-        ImageView img;
+        View base;
+        TextView nameTv=null;
+        ImageView img=null;
+
+        ViewHolder(View base){
+            this.base=base;
+        }
+
+        TextView getLabel(){
+            if(nameTv==null){
+                nameTv=(TextView)base.findViewById(R.id.nameTv);
+            }
+            return nameTv;
+        }
+
+        ImageView getImg(){
+            if(img==null){
+                img=(ImageView)base.findViewById(R.id.imageView1);
+            }
+            return  img;
+        }
     }
 
     public View getView (int position, View convertView, ViewGroup parent){
-
+        ViewHolder holder = null;
         //Check if the View is null. If so it will create it
         if(convertView==null){
             inflater=(LayoutInflater) c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView=inflater.inflate(R.layout.notification_row_model,null);
+            holder=new ViewHolder(convertView);
+            convertView.setTag(holder);
         }
         else{
-            ViewHolder holder = new ViewHolder();
-            holder.nameTv=(TextView)convertView.findViewById(R.id.nameTv);
-            holder.img=(ImageView)convertView.findViewById(R.id.imageView1);
-
-            holder.nameTv.setText(names[position]);
-            holder.img.setImageResource(images[position]);
+            holder=(ViewHolder)convertView.getTag();
         }
-
+            holder.getLabel().setText(names[position]);
+            holder.getImg().setImageResource(images[position]);
         return convertView;
     }
 }

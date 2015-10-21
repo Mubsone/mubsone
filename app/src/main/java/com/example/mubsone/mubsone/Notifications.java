@@ -32,13 +32,14 @@ public class Notifications extends ListActivity implements NavigationView.OnNavi
 
         NotificationListAdapter ntfListAdapter = new NotificationListAdapter(this, names, images);
         setListAdapter(ntfListAdapter);
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
     }
-    
+
     //The actionListener of the list. So for each notification it will have a different condition
     protected void onListItemClick(ListView l, View v, int position, long id){
         Toast.makeText(this, l.getItemAtPosition(position).toString(), Toast.LENGTH_SHORT).show();

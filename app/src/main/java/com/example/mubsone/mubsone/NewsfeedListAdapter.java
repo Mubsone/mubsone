@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -31,32 +32,62 @@ public class NewsfeedListAdapter extends ArrayAdapter<String> {
     }
 
     public class ViewHolder{
+        View base;
         TextView uName;
         TextView sTitle;
         TextView rate;
-        ImageView img;
+        ImageButton img;
+
+        ViewHolder(View base){
+            this.base=base;
+        }
+
+        TextView getUsername(){
+            if(uName==null){
+                uName=(TextView)base.findViewById(R.id.username);
+            }
+            return uName;
+        }
+
+        TextView getSongTitle(){
+            if(sTitle==null){
+                sTitle=(TextView)base.findViewById(R.id.songTitle);
+            }
+            return  sTitle;
+            }
+
+        TextView getRate(){
+            if(rate==null){
+                rate=(TextView)base.findViewById(R.id.rates);
+            }
+            return rate;
+        }
+
+        ImageButton getUserImg(){
+            if(img==null){
+                img=(ImageButton)base.findViewById(R.id.userImageButton);
+            }
+            return img;
+        }
+
     }
 
     public View getView (int position, View convertView, ViewGroup parent){
-
+        ViewHolder holder = null;
         //Check if the View is null. If so it will create it
         if(convertView==null){
             inflater=(LayoutInflater) c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView=inflater.inflate(R.layout.newsfeed_row_model,null);
+            holder=new ViewHolder(convertView);
+            convertView.setTag(holder);
         }
         else{
-            ViewHolder holder = new ViewHolder();
-            holder.uName=(TextView)convertView.findViewById(R.id.username);
-            holder.sTitle=(TextView)convertView.findViewById(R.id.songTitle);
-            holder.rate=(TextView)convertView.findViewById(R.id.rates);
-            holder.img=(ImageView)convertView.findViewById(R.id.userImageButton);
-
-            holder.uName.setText(username[position]);
-            holder.sTitle.setText(songTitle[position]);
-            holder.rate.setText(rating[position]);
-            holder.img.setImageResource(userImages[position]);
+            holder=(ViewHolder)convertView.getTag();
         }
-
+        holder.getUsername().setText(username[position]);
+        holder.getSongTitle().setText(songTitle[position]);
+        holder.getRate().setText(rating[position]);
+        holder.getUserImg().setImageResource(userImages[position]);
         return convertView;
     }
 }
