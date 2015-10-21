@@ -22,7 +22,6 @@ public class Newsfeed extends ListActivity
         //full screen aplication
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_newsfeed);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         NewsfeedListAdapter nwsfListAdapter = new NewsfeedListAdapter(this, username, songTitle, rating, images);
         setListAdapter(nwsfListAdapter);

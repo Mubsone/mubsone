@@ -10,6 +10,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.content.Context;
@@ -37,8 +38,7 @@ public class Notifications extends ListActivity implements NavigationView.OnNavi
         navigationView.setNavigationItemSelectedListener(this);
 
     }
-
-
+    
     //The actionListener of the list. So for each notification it will have a different condition
     protected void onListItemClick(ListView l, View v, int position, long id){
         Toast.makeText(this, l.getItemAtPosition(position).toString(), Toast.LENGTH_SHORT).show();

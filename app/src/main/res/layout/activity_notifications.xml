@@ -5,24 +5,12 @@
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:fitsSystemWindows="true" tools:openDrawer="start"
     android:background="@color/white" >
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:fitsSystemWindows="true"
-    tools:context="com.example.mubsone.mubsone.MyProfile"
-    android:background="@color/white">
-
-    <android.support.design.widget.AppBarLayout android:layout_height="wrap_content"
-        android:layout_width="match_parent" android:theme="@style/AppTheme.AppBarOverlay">
 
         <include
             android:id="@+id/toolbarNotifications"
-            layout="@layout/toolbar_of_notifications">
+            layout="@layout/toolbar_of_notifications" android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 
-        </include>
-
-    </android.support.design.widget.AppBarLayout>
     <android.support.design.widget.NavigationView
         android:layout_width="60dp"
         android:layout_height="match_parent"
@@ -32,9 +20,7 @@
         android:fitsSystemWindows="false"
         app:headerLayout="@layout/nav_header_main"
         app:menu="@menu/activity_main_drawer"
+
         />
 
-    <include layout="@layout/content_notifications" />
-
-</android.support.design.widget.CoordinatorLayout>
 </android.support.v4.widget.DrawerLayout>
