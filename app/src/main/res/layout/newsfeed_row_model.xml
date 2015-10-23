@@ -41,14 +41,27 @@
         android:progressTint="@color/colorPrimary"
         android:backgroundTint="@color/colorPrimary"
         android:secondaryProgressTint="@color/colorPrimary"
-        android:layout_below="@+id/username"
+        android:layout_marginRight="55dp"
+        android:layout_marginEnd="55dp"
+        android:layout_alignBottom="@+id/username"
         android:layout_alignRight="@+id/videoView1"
         android:layout_alignEnd="@+id/videoView1" />
 
+    <TextView
+        android:layout_width="50sp"
+        android:layout_height="wrap_content"
+        android:text="Rates"
+        android:id="@+id/rates"
+        android:layout_alignRight="@+id/videoView1"
+        android:layout_alignEnd="@+id/videoView1"
+        android:layout_alignBottom="@+id/userImageButton"
+        android:layout_alignTop="@+id/ratingBar"
+        android:textSize="@dimen/activity_horizontal_margin"/>
+
     <ImageButton
         android:id="@+id/iconDescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:src="@mipmap/ic_new_description"
         android:layout_below="@+id/videoView1"
         android:layout_alignLeft="@+id/videoView1"
@@ -87,14 +100,14 @@
         android:background="@android:color/transparent"/>
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:src="@mipmap/ic_new_share"
         android:id="@+id/imageButton"
         android:layout_below="@+id/videoView1"
-        android:background="@android:color/transparent"
-        android:layout_alignRight="@+id/videoView1"
-        android:layout_alignEnd="@+id/videoView1" />
+        android:layout_alignRight="@+id/rates"
+        android:layout_alignEnd="@+id/rates"
+        android:background="@android:color/transparent"/>
 
 
 </RelativeLayout>
