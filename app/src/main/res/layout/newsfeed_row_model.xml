@@ -19,7 +19,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignLeft="@+id/videoView1"
         android:layout_alignStart="@+id/videoView1"
-        android:background="@color/white"/>
+        android:background="@android:color/transparent"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -66,7 +66,7 @@
         android:layout_below="@+id/videoView1"
         android:layout_alignLeft="@+id/videoView1"
         android:layout_alignStart="@+id/videoView1"
-        android:background="@color/white"/>
+        android:background="@android:color/transparent"/>
     <TextView
         android:id="@+id/songTitle"
         android:layout_width="match_parent"
@@ -87,7 +87,7 @@
         android:layout_below="@+id/videoView1"
         android:layout_toLeftOf="@+id/imageButton"
         android:layout_toStartOf="@+id/imageButton"
-        android:background="@color/white"/>
+        android:background="@android:color/transparent"/>
 
     <ImageButton
         android:id="@+id/iconView"
@@ -97,7 +97,7 @@
         android:layout_below="@+id/videoView1"
         android:layout_toLeftOf="@+id/iconComment"
         android:layout_toStartOf="@+id/iconComment"
-        android:background="@color/white"/>
+        android:background="@android:color/transparent"/>
 
     <ImageButton
         android:layout_width="50dp"
@@ -107,7 +107,7 @@
         android:layout_below="@+id/videoView1"
         android:layout_alignRight="@+id/rates"
         android:layout_alignEnd="@+id/rates"
-        android:background="@color/white"/>
+        android:background="@android:color/transparent"/>
 
 
 </RelativeLayout>
