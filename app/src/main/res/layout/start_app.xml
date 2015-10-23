@@ -46,17 +46,19 @@
                 android:text="@string/sign_up"
                 android:textColor="@color/white"
                 android:paddingLeft="30dp"
-                android:id="@+id/text2"/>
+                android:id="@+id/text2"
+                android:clickable="true"/>
 
             <TextView
+                android:id="@+id/text3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/log_in"
-                android:id="@+id/text3"
-                android:textColor="@color/white"
+                android:textColor="@color/white_log"
                 android:singleLine="false"
                 android:paddingLeft="100dp"
+                android:clickable="true"
                 />
         </LinearLayout>
 
@@ -67,7 +69,7 @@
             android:hint="@string/user_name"
             android:ems="12"
             android:id="@+id/edittext0"
-            android:textColorHint="@color/black"
+            android:textColorHint="@color/white_log"
             android:textColor="@color/black"
             android:layout_marginTop="15dp"
             android:background="@drawable/white_bar"
@@ -83,7 +85,7 @@
             android:id="@+id/edittext1"
             android:layout_marginTop="10dp"
             android:background="@drawable/white_bar"
-            android:textColorHint="@color/black"
+            android:textColorHint="@color/white_log"
             android:textColor="@color/black"
             android:textAlignment="inherit"
             android:paddingLeft="8dp" />
@@ -116,7 +118,7 @@
         android:background="@drawable/white_bar_facebook"
         android:layout_above="@+id/text4"
         android:layout_centerHorizontal="true"
-        android:contentDescription="Log_in_facebook" />
+        android:contentDescription="@string/bar" />
 
 
 </RelativeLayout>
