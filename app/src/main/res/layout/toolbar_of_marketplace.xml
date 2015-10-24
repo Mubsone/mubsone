@@ -11,9 +11,19 @@
         app:theme="@style/AppTheme.PopupOverlay"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        app:title="Marketplace"
+        android:background="@drawable/toolbar_new_1"
+        android:gravity="center"
         app:titleTextColor="@color/white">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/toolbar_marketplace"
+            android:textSize="25dp"
+            android:textColor="@color/black"
+            android:layout_gravity="center"
+            android:id="@+id/title"
+            android:textStyle="bold" />
     </android.support.v7.widget.Toolbar>
 
     <include layout="@layout/content_market_place" />

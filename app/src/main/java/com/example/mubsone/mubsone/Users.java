@@ -18,20 +18,20 @@ public class Users {
     private String Password;
     private int Rating;   // out of the 5 starts
     private int Fans;     // the number of the fans for the users
-    private Text Biography;  //text type ??
+    private String Biography;  //text type ??
     private boolean isBanned;
     private String Email;
-    private Image Avatar;
+
     private boolean isAdmin;
     private boolean isPremium;
 
     //??The user can be an artist right ??
 
 
-    public Users(long id_User, String fistname, String lastname, String username, String password, int rating, int fans, Text biography, boolean isBanned, String email, Image avatar, boolean isAdmin, boolean isPremium) {
+    public Users(long id_User, String username, String password, String firstname, String last_name, String email , int rating, int fans, String biography, boolean isBanned , boolean isAdmin, boolean isPremium) {
         Id_User = id_User;
-        Fistname = fistname;
-        Lastname = lastname;
+        Fistname = username;
+        Lastname = password;
         Username = username;
         Password = password;
         Rating = rating;
@@ -39,7 +39,6 @@ public class Users {
         Biography = biography;
         this.isBanned = isBanned;
         Email = email;
-        Avatar = avatar;
         this.isAdmin = isAdmin;
         this.isPremium = isPremium;
     }
@@ -100,11 +99,11 @@ public class Users {
         Fans = fans;
     }
 
-    public Text getBiography() {
+    public String getBiography() {
         return Biography;
     }
 
-    public void setBiography(Text biography) {
+    public void setBiography(String biography) {
         Biography = biography;
     }
 
@@ -122,14 +121,6 @@ public class Users {
 
     public void setEmail(String email) {
         Email = email;
-    }
-
-    public Image getAvatar() {
-        return Avatar;
-    }
-
-    public void setAvatar(Image avatar) {
-        Avatar = avatar;
     }
 
     public boolean isAdmin() {
