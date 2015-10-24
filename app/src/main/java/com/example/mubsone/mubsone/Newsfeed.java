@@ -2,23 +2,14 @@ package com.example.mubsone.mubsone;
 
 import android.app.ListActivity;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.FrameLayout;
-import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 public class Newsfeed extends ListActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -26,7 +17,7 @@ public class Newsfeed extends ListActivity
     String [] username ={"Username1", "Username2", "Username3", "Username4"};
     String [] songTitle ={"Grizzly Bear", "Hotline Bling", "I ran away", "Sex on fire"};
     String [] rating ={"5", "3.5", "4", "3"};
-    int [] images = {R.mipmap.ic_new_description, R.mipmap.ic_new_commnet, R.mipmap.ic_new_share, R.mipmap.ic_new_viewer};
+    int [] images = {R.mipmap.ic_new_description, R.mipmap.ic_new_comment, R.mipmap.ic_new_share, R.mipmap.ic_new_viewer};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //full screen aplication
