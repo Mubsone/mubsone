@@ -22,12 +22,11 @@
         android:id="@+id/imageView"
         android:layout_marginTop="28dp"
         android:contentDescription="Title" />
-
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="101dp"
+        android:layout_marginTop="80dp"
         android:id="@+id/linearLayout"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/text0">
@@ -43,7 +42,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/sign_up"
+                android:text="@string/log_in"
                 android:textColor="@color/white"
                 android:paddingLeft="30dp"
                 android:id="@+id/text2"
@@ -53,9 +52,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/log_in"
+                android:text="@string/sign_up"
                 android:id="@+id/text3"
-                android:textColor="@color/white"
+                android:textColor="@color/white_log"
                 android:singleLine="false"
                 android:paddingLeft="100dp"
                 android:clickable="true"
@@ -69,13 +68,12 @@
             android:hint="@string/user_name"
             android:ems="12"
             android:id="@+id/edittext0"
-            android:textColorHint="@color/black"
+            android:textColorHint="@color/white_log"
             android:textColor="@color/black"
             android:layout_marginTop="15dp"
             android:background="@drawable/white_bar"
             android:textAlignment="inherit"
             android:paddingLeft="8dp" />
-
         <EditText
             android:layout_width="253dp"
             android:layout_height="40dp"
@@ -85,11 +83,50 @@
             android:id="@+id/edittext1"
             android:layout_marginTop="10dp"
             android:background="@drawable/white_bar"
-            android:textColorHint="@color/black"
+            android:textColorHint="@color/white_log"
             android:textColor="@color/black"
             android:textAlignment="inherit"
-            android:paddingLeft="8dp" />
-
+            android:paddingLeft="8dp"
+            android:visibility="visible"/>
+        <EditText
+            android:layout_width="253dp"
+            android:layout_height="40dp"
+            android:inputType="textPersonName"
+            android:ems="16"
+            android:id="@+id/edittext2"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/white_bar"
+            android:textColorHint="@color/white_log"
+            android:textColor="@color/black"
+            android:textAlignment="inherit"
+            android:paddingLeft="8dp"
+            android:visibility="gone" />
+        <EditText
+            android:layout_width="253dp"
+            android:layout_height="40dp"
+            android:inputType="textPersonName"
+            android:ems="16"
+            android:id="@+id/edittext3"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/white_bar"
+            android:textColorHint="@color/white_log"
+            android:textColor="@color/black"
+            android:textAlignment="inherit"
+            android:paddingLeft="8dp"
+            android:visibility="gone"/>
+        <EditText
+            android:layout_width="253dp"
+            android:layout_height="40dp"
+            android:inputType="textEmailAddress"
+            android:ems="16"
+            android:id="@+id/edittext4"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/white_bar"
+            android:textColorHint="@color/white_log"
+            android:textColor="@color/black"
+            android:textAlignment="inherit"
+            android:paddingLeft="8dp"
+            android:visibility="gone"/>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -99,6 +136,7 @@
 
 
     </LinearLayout>
+
 
     <TextView
         android:layout_width="wrap_content"
