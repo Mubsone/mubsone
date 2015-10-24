@@ -30,7 +30,7 @@ public class LogIn extends AppCompatActivity {
 
 
         change_fonts();
-        press_the_button(false);
+        press_the_button(false);  //error here //next time i need to solve
         check_interface();
     }
     //assign all the edit text for the sing in
@@ -94,26 +94,27 @@ public class LogIn extends AppCompatActivity {
         }
         log_in_now= (Button)findViewById(R.id.button0);
     }
-    //optimize  :-//
+    //optimize  later :-//
     public void press_the_button(boolean x) {
         if (x) {
             log_in_now.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     //start a new layout for you
-                    Intent next_layout = new Intent(getApplicationContext(), Newsfeed.class);
-                    onPause();
-                    startActivity(next_layout);
                     for (int i=0; i<id_edit.length; i++){
-                        String_id_edit [i ]= id_edit[i].getText().toString();
+                        String_id_edit [i]= id_edit[i].getText().toString();
                     }
                     //just a test
                     NewUser=new Users(1, String_id_edit [0] , String_id_edit [1] ,  String_id_edit [2],   String_id_edit [3] , String_id_edit [4], 0 , 0," " ,false , false, false);
+                    Intent next_layout = new Intent(getApplicationContext(), Newsfeed.class);
+                    onPause();
+                    startActivity(next_layout);
                 }
             });
         }else {
             //take the user things
             log_in_now.setOnClickListener(new View.OnClickListener() {
+                //the servers information still here
                 @Override
                 public void onClick(View v) {
                     //start a new layout for you

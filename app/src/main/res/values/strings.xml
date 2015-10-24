@@ -95,5 +95,12 @@
     <string name="hint_user">User</string>
     <string name="hint_password">Password</string>
     <string name="hint_email">Email</string>
+    //for the toolbar the name
+    <string name="toolbar_shearch">Shearch</string>
+    <string name="toolbar_newsfeed">News Feed</string>
+    <string name="toolbar_profil">Profil</string>
+    <string name="toolbar_notification">Notification</string>
+    <string name="toolbar_marketplace">Market Place</string>
+    <string name="toolbar_seting">Setting</string>
 
 </resources>

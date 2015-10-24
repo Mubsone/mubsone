@@ -18,6 +18,7 @@ public class NotificationListAdapter extends ArrayAdapter<String> {
     LayoutInflater inflater;
 
     public NotificationListAdapter(Context context, String [] names, int [] images) {
+
         super(context, R.layout.notification_row_model,names);
 
         this.c=context;
