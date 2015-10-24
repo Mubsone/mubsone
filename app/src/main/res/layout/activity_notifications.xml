@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools" android:id="@+id/drawer_layout"
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:fitsSystemWindows="true" tools:openDrawer="start"
-    android:background="@color/white" >
+    android:background="@android:color/transparent" >
 
         <include
             android:id="@+id/toolbarNotifications"
@@ -14,11 +14,14 @@
     <android.support.design.widget.NavigationView
         android:layout_width="60dp"
         android:layout_height="match_parent"
+        android:layout_marginTop="142dp"
+        android:layout_marginBottom="115dp"
         android:id="@+id/nav_view"
         android:background="@drawable/side_nav_under"
         android:layout_gravity="start"
         android:fitsSystemWindows="false"
         app:headerLayout="@layout/nav_header_main"
+        app:itemIconTint="@color/white"
         app:menu="@menu/activity_main_drawer"
 
         />

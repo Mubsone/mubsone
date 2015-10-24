@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
-        <item android:id="@+id/nav_search" android:icon="@drawable/ic_search"
+        <item android:id="@+id/nav_search" android:icon="@mipmap/ic_new_search"
             android:title="" />
-        <item android:id="@+id/nav_newsfeed" android:icon="@drawable/ic_newsfeed"
+        <item android:id="@+id/nav_newsfeed" android:icon="@mipmap/ic_new_newsfeed"
             android:title="" />
-        <item android:id="@+id/nav_myprofil" android:icon="@drawable/ic_myprofil"
+        <item android:id="@+id/nav_myprofil" android:icon="@mipmap/ic_new_my_profile"
             android:title="" />
-        <item android:id="@+id/nav_notification" android:icon="@drawable/ic_notification"
+        <item android:id="@+id/nav_notification" android:icon="@mipmap/ic_new_notification"
             android:title="" />
-        <item android:id="@+id/nav_marketplace" android:icon="@drawable/ic_marketplace"
+        <item android:id="@+id/nav_marketplace" android:icon="@mipmap/ic_new_marketplace"
             android:title="" />
-        <item android:id="@+id/nav_settings" android:icon="@drawable/ic_settings"
+        <item android:id="@+id/nav_settings" android:icon="@mipmap/ic_new_seetings"
             android:title="" />
-        <item android:id="@+id/nav_logout" android:icon="@drawable/ic_logout"
+        <item android:id="@+id/nav_logout" android:icon="@mipmap/ic_logout" android:visible="true"
             android:title="" />
     </group>
 

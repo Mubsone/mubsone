@@ -8,8 +8,14 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Adapter;
+import android.widget.AdapterView;
+import android.widget.GridView;
+import android.widget.Toast;
 
-public class MyProfile extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MyProfile extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, AdapterView.OnItemClickListener {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +27,14 @@ public class MyProfile extends AppCompatActivity implements NavigationView.OnNav
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        GridView myGrid = (GridView)findViewById(R.id.gridView);
+        myGrid.setAdapter(new ProfileGridAdapter(this));
+        myGrid.setOnItemClickListener(this);
+    }
+
+    public void onItemClick(AdapterView<?> adapterView, View view, int position, long l){
+        Toast.makeText(this, adapterView.getItemAtPosition(position).toString(), Toast.LENGTH_SHORT).show();
     }
 
     public boolean onNavigationItemSelected(MenuItem item) {

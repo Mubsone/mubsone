@@ -1,6 +1,7 @@
 package com.example.mubsone.mubsone;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -14,7 +15,6 @@ public class LogIn extends AppCompatActivity {
     //declare all the TextViewer on the main page
     private TextView [] id_text= new TextView [4];
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //full screen aplication
@@ -27,8 +27,26 @@ public class LogIn extends AppCompatActivity {
         //subprograms
         change_fonts();
         press_the_button();
+        click_text();
     }
-
+    public void click_text() {
+        //for the log in text
+        id_text [2].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                id_text[2].setTextColor(getResources().getColor(R.color.white));
+                id_text[1].setTextColor(getResources().getColor(R.color.white_log));
+            }
+        });
+        //for the sign in text
+        id_text [1].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                id_text[1].setTextColor(getResources().getColor(R.color.white));
+                id_text[2].setTextColor(getResources().getColor(R.color.white_log));
+            }
+        });
+    }
     //optimize the setting here.
     public void change_fonts(){
         id_text [0] = (TextView) findViewById(R.id.text0);

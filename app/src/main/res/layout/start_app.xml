@@ -46,7 +46,8 @@
                 android:text="@string/sign_up"
                 android:textColor="@color/white"
                 android:paddingLeft="30dp"
-                android:id="@+id/text2"/>
+                android:id="@+id/text2"
+                android:clickable="true"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -57,6 +58,7 @@
                 android:textColor="@color/white"
                 android:singleLine="false"
                 android:paddingLeft="100dp"
+                android:clickable="true"
                 />
         </LinearLayout>
 
