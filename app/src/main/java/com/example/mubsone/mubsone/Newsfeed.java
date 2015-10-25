@@ -14,10 +14,10 @@ import android.view.WindowManager;
 public class Newsfeed extends ListActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    String [] username ={"jv21", "alexfer", "brajansaraci", "mikelv92"};
+    String [] username ={"jv21", "AndyMatrix", "brajansaraci", "mikelv92"};
     String [] songTitle ={"Grizzly Bear", "Hotline Bling", "I ran away", "Sex on fire"};
     String [] rating ={"5", "3.5", "4", "3"};
-    int [] images = {R.mipmap.ic_new_user, R.mipmap.ic_new_user, R.mipmap.ic_new_user, R.mipmap.ic_new_user};
+    int [] images = {R.mipmap.example_ic_user, R.mipmap.ic_new_user, R.mipmap.ic_new_user, R.mipmap.ic_new_user};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //full screen aplication

@@ -10,12 +10,13 @@
         android:layout_marginTop="70dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
+
     <ImageButton
         android:id="@+id/profilePictureInNewsfeed"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginTop="20dp"
-        android:src="@mipmap/ic_new_user"
+        android:src="@mipmap/example_ic_user"
         android:layout_alignParentTop="true"
         android:layout_alignLeft="@+id/videoNewsfeed"
         android:layout_alignStart="@+id/videoNewsfeed"
@@ -25,21 +26,24 @@
         android:layout_height="wrap_content"
         android:text="usernameNewsfeed"
         android:textColor="@color/black"
-        android:textSize="18sp"
+        android:textSize="20dp"
         android:id="@+id/username"
         android:layout_alignBottom="@+id/profilePictureInNewsfeed"
         android:layout_toRightOf="@+id/profilePictureInNewsfeed"
-        android:layout_toEndOf="@+id/profilePictureInNewsfeed" />
+        android:layout_toEndOf="@+id/profilePictureInNewsfeed"
+        android:layout_marginLeft="14dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginBottom="11dp"/>
 
 
-
+    <!--the number !!5 need to be the same like the start-->
     <TextView
         android:layout_width="30dp"
         android:layout_height="wrap_content"
         android:text="5"
         android:id="@+id/numberOfRatesNewsfeed"
         android:textSize="20sp"
-        android:layout_alignTop="@+id/profilePictureInNewsfeed"
+        android:layout_alignBottom="@+id/myRatingBar"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
@@ -93,19 +97,27 @@
         android:layout_alignEnd="@+id/videoNewsfeed" />
 
     <RatingBar
+        android:id="@+id/myRatingBar"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:numStars="5"
+        android:rating="0"
+        android:isIndicator="false"
+        style="@style/foodRatingBar"
+        android:layout_alignBottom="@+id/username"
+        android:layout_toLeftOf="@+id/numberOfRatesNewsfeed"
+        android:layout_toStartOf="@+id/numberOfRatesNewsfeed"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="2.5dp"/>
+
+
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/ratingBarInNewsfeed"
-        style = "?android:attr/ratingBarStyleSmall"
-        android:numStars = "5"
-        android:rating   = "5"
-        android:stepSize="0.1"
-        android:progressTint="@color/colorPrimary"
-        android:backgroundTint="@color/black"
-        android:secondaryProgressTint="@color/white_log"
-        android:layout_alignBottom="@+id/profilePictureInNewsfeed"
-        android:layout_alignRight="@+id/videoNewsfeed"
-        android:layout_alignEnd="@+id/videoNewsfeed" />
+        android:src="@mipmap/ic_new_play"
+        android:layout_marginBottom="74dp"
+        android:layout_alignBottom="@+id/videoNewsfeed"
+        android:layout_centerHorizontal="true" />
 
 
 </RelativeLayout>
