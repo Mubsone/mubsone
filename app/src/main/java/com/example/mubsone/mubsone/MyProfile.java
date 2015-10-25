@@ -28,12 +28,12 @@ public class MyProfile extends AppCompatActivity implements NavigationView.OnNav
         setContentView(R.layout.activity_my_profile);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_profile);
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        GridView myGrid = (GridView)findViewById(R.id.gridView);
+        GridView myGrid = (GridView)findViewById(R.id.gridViewProfile);
         myGrid.setAdapter(new ProfileGridAdapter(this));
         myGrid.setOnItemClickListener(this);
     }
@@ -73,7 +73,7 @@ public class MyProfile extends AppCompatActivity implements NavigationView.OnNav
             startActivity(next_layout);
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_profile);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }

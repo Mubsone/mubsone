@@ -15,7 +15,7 @@
         android:background="@drawable/toolbar_new_1"
         android:gravity="center"
         app:titleTextColor="@color/white">
-s
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -23,7 +23,7 @@ s
             android:textSize="25dp"
             android:textColor="@color/black"
             android:layout_gravity="center"
-            android:id="@+id/title"
+            android:id="@+id/toolbarTitleMarketplace"
             android:textStyle="bold" />
     </android.support.v7.widget.Toolbar>
 

@@ -39,14 +39,14 @@ public class NotificationListAdapter extends ArrayAdapter<String> {
 
         TextView getLabel(){
             if(nameTv==null){
-                nameTv=(TextView)base.findViewById(R.id.nameTv);
+                nameTv=(TextView)base.findViewById(R.id.textNotification);
             }
             return nameTv;
         }
 
         ImageView getImg(){
             if(img==null){
-                img=(ImageView)base.findViewById(R.id.imageView1);
+                img=(ImageView)base.findViewById(R.id.profilePictureInNotifications);
             }
             return  img;
         }

@@ -14,10 +14,10 @@ import android.view.WindowManager;
 public class Newsfeed extends ListActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    String [] username ={"Username1", "Username2", "Username3", "Username4"};
+    String [] username ={"jv21", "alexfer", "brajansaraci", "mikelv92"};
     String [] songTitle ={"Grizzly Bear", "Hotline Bling", "I ran away", "Sex on fire"};
     String [] rating ={"5", "3.5", "4", "3"};
-    int [] images = {R.mipmap.ic_new_description, R.mipmap.ic_new_comment, R.mipmap.ic_new_share, R.mipmap.ic_new_viewer};
+    int [] images = {R.mipmap.ic_new_user, R.mipmap.ic_new_user, R.mipmap.ic_new_user, R.mipmap.ic_new_user};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //full screen aplication
@@ -29,7 +29,7 @@ public class Newsfeed extends ListActivity
         NewsfeedListAdapter nwsfListAdapter = new NewsfeedListAdapter(this, username, songTitle, rating, images);
         setListAdapter(nwsfListAdapter);
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_newsfeed);
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -39,7 +39,7 @@ public class Newsfeed extends ListActivity
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_newsfeed);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
 
@@ -105,7 +105,7 @@ public class Newsfeed extends ListActivity
             startActivity(next_layout);
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_newsfeed);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }

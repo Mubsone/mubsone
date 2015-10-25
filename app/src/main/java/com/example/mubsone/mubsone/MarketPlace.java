@@ -34,7 +34,7 @@ public class MarketPlace extends AppCompatActivity implements NavigationView.OnN
         Typeface MyCustomFont = Typeface.createFromAsset(getAssets(),"fonts/dear_joe.ttf");
         title_toolbar.setTypeface(MyCustomFont);
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_marketplace);
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -72,7 +72,7 @@ public class MarketPlace extends AppCompatActivity implements NavigationView.OnN
             startActivity(next_layout);
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_marketplace);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }

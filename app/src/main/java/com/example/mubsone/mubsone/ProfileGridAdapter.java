@@ -71,7 +71,7 @@ public class ProfileGridAdapter extends BaseAdapter {
         ImageView img;
 
         ViewHolder(View v){
-            img = (ImageView)v.findViewById(R.id.imageView1);
+            img = (ImageView)v.findViewById(R.id.gridImageInProfile);
         }
     }
 }

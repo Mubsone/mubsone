@@ -4,105 +4,98 @@
     android:orientation="horizontal">
 
     <VideoView
-        android:id="@+id/videoView1"
+        android:id="@+id/videoNewsfeed"
         android:layout_width="350dp"
         android:layout_height="200dp"
         android:layout_marginTop="70dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
     <ImageButton
-        android:id="@+id/userImageButton"
-        android:layout_width="50dp"
-        android:layout_height="30dp"
+        android:id="@+id/profilePictureInNewsfeed"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginTop="20dp"
         android:src="@mipmap/ic_new_user"
         android:layout_alignParentTop="true"
-        android:layout_alignLeft="@+id/videoView1"
-        android:layout_alignStart="@+id/videoView1"
+        android:layout_alignLeft="@+id/videoNewsfeed"
+        android:layout_alignStart="@+id/videoNewsfeed"
         android:background="@android:color/transparent"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Username"
+        android:text="usernameNewsfeed"
         android:textColor="@color/black"
-        android:textSize="@dimen/activity_horizontal_margin"
+        android:textSize="18sp"
         android:id="@+id/username"
-        android:layout_alignTop="@+id/userImageButton"
-        android:layout_alignLeft="@+id/songTitle"
-        android:layout_alignStart="@+id/songTitle" />
+        android:layout_alignBottom="@+id/profilePictureInNewsfeed"
+        android:layout_toRightOf="@+id/profilePictureInNewsfeed"
+        android:layout_toEndOf="@+id/profilePictureInNewsfeed" />
 
 
 
     <TextView
         android:layout_width="30dp"
         android:layout_height="wrap_content"
-        android:text="Rates"
-        android:id="@+id/rates"
-        android:layout_alignRight="@+id/videoView1"
-        android:layout_alignEnd="@+id/videoView1"
-        android:layout_alignBottom="@+id/userImageButton"
-        android:layout_alignTop="@+id/ratingBar"
-        android:textSize="@dimen/activity_horizontal_margin"/>
+        android:text="5"
+        android:id="@+id/numberOfRatesNewsfeed"
+        android:textSize="20sp"
+        android:layout_alignTop="@+id/profilePictureInNewsfeed"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <ImageButton
-        android:id="@+id/iconDescription"
-        android:layout_marginTop="10dp"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:id="@+id/iconDescriptionInNewsfeed"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:src="@mipmap/ic_new_description"
-        android:layout_below="@+id/videoView1"
-        android:layout_alignLeft="@+id/videoView1"
-        android:layout_alignStart="@+id/videoView1"
-        android:background="@android:color/transparent"/>
+        android:background="@android:color/transparent"
+        android:layout_below="@+id/videoNewsfeed"
+        android:layout_alignRight="@+id/profilePictureInNewsfeed"
+        android:layout_alignEnd="@+id/profilePictureInNewsfeed" />
     <TextView
-        android:id="@+id/songTitle"
+        android:id="@+id/songTitleInNewsfeed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Song Title"
-        android:textSize="@dimen/activity_horizontal_margin"
-        android:layout_below="@+id/videoView1"
-        android:layout_toRightOf="@+id/iconDescription"
-        android:layout_toEndOf="@+id/iconDescription"
-        android:layout_marginLeft="28dp"
-        android:layout_marginStart="28dp" />
+        android:textSize="15sp"
+        android:layout_marginTop="285dp"
+        android:layout_toRightOf="@+id/iconDescriptionInNewsfeed"
+        android:layout_toEndOf="@+id/iconDescriptionInNewsfeed" />
 
     <ImageButton
-        android:id="@+id/iconComment"
-        android:layout_marginTop="10dp"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:id="@+id/iconCommentInNewsfeed"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:src="@mipmap/ic_new_comment"
-        android:layout_below="@+id/videoView1"
-        android:layout_toLeftOf="@+id/imageButton"
-        android:layout_toStartOf="@+id/imageButton"
-        android:background="@android:color/transparent"/>
+        android:background="@android:color/transparent"
+        android:layout_alignTop="@+id/iconViewInNewsfeed"
+        android:layout_toLeftOf="@+id/iconShareInNewsfeed"
+        android:layout_toStartOf="@+id/iconShareInNewsfeed" />
 
     <ImageButton
-        android:id="@+id/iconView"
-        android:layout_marginTop="10dp"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:id="@+id/iconViewInNewsfeed"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:src="@mipmap/ic_new_viewer"
-        android:layout_below="@+id/videoView1"
-        android:layout_toLeftOf="@+id/iconComment"
-        android:layout_toStartOf="@+id/iconComment"
-        android:background="@android:color/transparent"/>
+        android:background="@android:color/transparent"
+        android:layout_below="@+id/videoNewsfeed"
+        android:layout_toLeftOf="@+id/iconCommentInNewsfeed"
+        android:layout_toStartOf="@+id/iconCommentInNewsfeed" />
 
     <ImageButton
-        android:layout_marginTop="10dp"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:src="@mipmap/ic_new_share"
-        android:id="@+id/imageButton"
-        android:layout_below="@+id/videoView1"
-        android:layout_alignRight="@+id/rates"
-        android:layout_alignEnd="@+id/rates"
-        android:background="@android:color/transparent"/>
+        android:id="@+id/iconShareInNewsfeed"
+        android:background="@android:color/transparent"
+        android:layout_alignTop="@+id/iconCommentInNewsfeed"
+        android:layout_alignRight="@+id/videoNewsfeed"
+        android:layout_alignEnd="@+id/videoNewsfeed" />
 
     <RatingBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/ratingBar"
+        android:id="@+id/ratingBarInNewsfeed"
         style = "?android:attr/ratingBarStyleSmall"
         android:numStars = "5"
         android:rating   = "5"
@@ -110,9 +103,9 @@
         android:progressTint="@color/colorPrimary"
         android:backgroundTint="@color/black"
         android:secondaryProgressTint="@color/white_log"
-        android:layout_alignTop="@+id/username"
-        android:layout_toLeftOf="@+id/rates"
-        android:layout_toStartOf="@+id/rates" />
+        android:layout_alignBottom="@+id/profilePictureInNewsfeed"
+        android:layout_alignRight="@+id/videoNewsfeed"
+        android:layout_alignEnd="@+id/videoNewsfeed" />
 
 
 </RelativeLayout>

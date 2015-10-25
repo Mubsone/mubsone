@@ -30,7 +30,7 @@ public class Notifications extends ListActivity implements NavigationView.OnNavi
         NotificationListAdapter ntfListAdapter = new NotificationListAdapter(this, names, images);
         setListAdapter(ntfListAdapter);
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_notifications);
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -73,7 +73,7 @@ public class Notifications extends ListActivity implements NavigationView.OnNavi
             startActivity(next_layout);
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_notifications);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
