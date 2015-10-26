@@ -2,27 +2,25 @@ package com.example.mubsone.mubsone;
 
 import android.app.ListActivity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.content.Context;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
 public class Notifications extends ListActivity implements NavigationView.OnNavigationItemSelectedListener {
     String [] names = {"comment_icon", "description_icon", "viewer_icon", "share_icon","comment_icon", "description_icon", "viewer_icon", "share_icon","comment_icon", "description_icon", "viewer_icon", "share_icon","comment_icon", "description_icon", "viewer_icon", "share_icon","comment_icon", "description_icon", "viewer_icon", "share_icon","comment_icon", "description_icon", "viewer_icon", "share_icon","comment_icon", "description_icon", "viewer_icon", "share_icon"};
-    int [] images = {R.mipmap.ic_new_commnet, R.mipmap.ic_new_description, R.mipmap.ic_new_viewer, R.mipmap.ic_new_share,R.mipmap.ic_new_commnet, R.mipmap.ic_new_description, R.mipmap.ic_new_viewer, R.mipmap.ic_new_share,R.mipmap.ic_new_commnet, R.mipmap.ic_new_description, R.mipmap.ic_new_viewer, R.mipmap.ic_new_share,R.mipmap.ic_new_commnet, R.mipmap.ic_new_description, R.mipmap.ic_new_viewer, R.mipmap.ic_new_share,R.mipmap.ic_new_commnet, R.mipmap.ic_new_description, R.mipmap.ic_new_viewer, R.mipmap.ic_new_share,R.mipmap.ic_new_commnet, R.mipmap.ic_new_description, R.mipmap.ic_new_viewer, R.mipmap.ic_new_share,R.mipmap.ic_new_commnet, R.mipmap.ic_new_description, R.mipmap.ic_new_viewer, R.mipmap.ic_new_share};
+    int [] images = {R.mipmap.ic_new_comment, R.mipmap.ic_new_description, R.mipmap.ic_new_viewer, R.mipmap.ic_new_share,R.mipmap.ic_new_comment, R.mipmap.ic_new_description, R.mipmap.ic_new_viewer, R.mipmap.ic_new_share,R.mipmap.ic_new_comment, R.mipmap.ic_new_description, R.mipmap.ic_new_viewer, R.mipmap.ic_new_share,R.mipmap.ic_new_comment, R.mipmap.ic_new_description, R.mipmap.ic_new_viewer, R.mipmap.ic_new_share,R.mipmap.ic_new_comment, R.mipmap.ic_new_description, R.mipmap.ic_new_viewer, R.mipmap.ic_new_share,R.mipmap.ic_new_comment, R.mipmap.ic_new_description, R.mipmap.ic_new_viewer, R.mipmap.ic_new_share,R.mipmap.ic_new_comment, R.mipmap.ic_new_description, R.mipmap.ic_new_viewer, R.mipmap.ic_new_share};
+    private TextView title_toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,14 +29,22 @@ public class Notifications extends ListActivity implements NavigationView.OnNavi
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notifications);
-        //Create and set up adapter
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarOfNotifications);
+
+        toolbar.setVisibility(View.VISIBLE);
+        //arsing the font for the title toolbar
+        title_toolbar=(TextView)toolbar.findViewById(R.id.toolbarTitleNotifications);
+        Typeface MyCustomFont = Typeface.createFromAsset(getAssets(),"fonts/dear_joe.ttf");
+        title_toolbar.setTypeface(MyCustomFont);
+
+        //Create and set up adapter
         NotificationListAdapter ntfListAdapter = new NotificationListAdapter(this, names, images);
         setListAdapter(ntfListAdapter);
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_notifications);
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_notifications);
         navigationView.setNavigationItemSelectedListener(this);
 
     }
@@ -74,12 +80,12 @@ public class Notifications extends ListActivity implements NavigationView.OnNavi
             startActivity(next_layout);
 
         } else if (id == R.id.nav_marketplace) {
-            Intent next_layout = new Intent(getApplicationContext(), MarketPlace.class);
+            Intent next_layout = new Intent(getApplicationContext(), Marketplace.class);
             onPause();
             startActivity(next_layout);
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_notifications);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }

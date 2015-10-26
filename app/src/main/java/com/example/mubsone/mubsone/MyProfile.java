@@ -1,6 +1,7 @@
 package com.example.mubsone.mubsone;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -11,13 +12,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MyProfile extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, AdapterView.OnItemClickListener {
-
+    private TextView title_toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,14 +27,20 @@ public class MyProfile extends AppCompatActivity implements NavigationView.OnNav
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_profile);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarOfProfile);
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        toolbar.setVisibility(View.VISIBLE);
+        //arsing the font for the title toolbar
+        title_toolbar=(TextView)toolbar.findViewById(R.id.toolbarTitleProfile);
+        Typeface MyCustomFont = Typeface.createFromAsset(getAssets(),"fonts/dear_joe.ttf");
+        title_toolbar.setTypeface(MyCustomFont);
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_profile);
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_profile);
         navigationView.setNavigationItemSelectedListener(this);
 
-        GridView myGrid = (GridView)findViewById(R.id.gridView);
+        GridView myGrid = (GridView)findViewById(R.id.gridViewProfile);
         myGrid.setAdapter(new ProfileGridAdapter(this));
         myGrid.setOnItemClickListener(this);
     }
@@ -68,12 +75,12 @@ public class MyProfile extends AppCompatActivity implements NavigationView.OnNav
             startActivity(next_layout);
 
         } else if (id == R.id.nav_marketplace) {
-            Intent next_layout = new Intent(getApplicationContext(), MarketPlace.class);
+            Intent next_layout = new Intent(getApplicationContext(), Marketplace.class);
             onPause();
             startActivity(next_layout);
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_profile);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }

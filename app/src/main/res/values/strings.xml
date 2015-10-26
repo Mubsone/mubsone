@@ -102,5 +102,7 @@
     <string name="toolbar_notification">Notification</string>
     <string name="toolbar_marketplace">Market Place</string>
     <string name="toolbar_seting">Setting</string>
-
+    //just some example of user name
+    <string name="exaple_user">Setting</string>
+    <string name="exaple_song">Setting</string>
 </resources>

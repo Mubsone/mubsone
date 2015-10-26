@@ -52,7 +52,7 @@
             android:label="@string/title_activity_settings" >
         </activity>
         <activity
-            android:name=".MarketPlace"
+            android:name=".Marketplace"
             android:label="@string/title_activity_market_place"
             android:theme="@style/AppTheme" >
         </activity>

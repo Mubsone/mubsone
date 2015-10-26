@@ -51,21 +51,21 @@ public class NewsfeedListAdapter extends ArrayAdapter<String> {
 
         TextView getSongTitle(){
             if(sTitle==null){
-                sTitle=(TextView)base.findViewById(R.id.songTitle);
+                sTitle=(TextView)base.findViewById(R.id.songTitleInNewsfeed);
             }
             return  sTitle;
             }
 
         TextView getRate(){
             if(rate==null){
-                rate=(TextView)base.findViewById(R.id.rates);
+                rate=(TextView)base.findViewById(R.id.numberOfRatesNewsfeed);
             }
             return rate;
         }
 
         ImageButton getUserImg(){
             if(img==null){
-                img=(ImageButton)base.findViewById(R.id.userImageButton);
+                img=(ImageButton)base.findViewById(R.id.profilePictureInNewsfeed);
             }
             return img;
         }

@@ -2,31 +2,26 @@ package com.example.mubsone.mubsone;
 
 import android.app.ListActivity;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.FrameLayout;
-import android.widget.RelativeLayout;
-import android.widget.Toast;
+import android.widget.TextView;
 
-public class Newsfeed extends ListActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class Newsfeed extends ListActivity implements NavigationView.OnNavigationItemSelectedListener {
+    private TextView title_toolbar;
 
-    String [] username ={"Username1", "Username2", "Username3", "Username4"};
+    String [] username ={"jv21", "AndyMatrix", "brajansaraci", "mikelv92"};
     String [] songTitle ={"Grizzly Bear", "Hotline Bling", "I ran away", "Sex on fire"};
     String [] rating ={"5", "3.5", "4", "3"};
-    int [] images = {R.mipmap.ic_new_description, R.mipmap.ic_new_commnet, R.mipmap.ic_new_share, R.mipmap.ic_new_viewer};
+    int [] images = {R.mipmap.example_ic_user, R.mipmap.ic_new_user, R.mipmap.ic_new_user, R.mipmap.ic_new_user};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //full screen aplication
@@ -35,12 +30,20 @@ public class Newsfeed extends ListActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_newsfeed);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarOfNewsfeed);
+
+        toolbar.setVisibility(View.VISIBLE);
+        //arsing the font for the title toolbar
+        title_toolbar=(TextView)toolbar.findViewById(R.id.toolbarTitleNewsfeed);
+        Typeface MyCustomFont = Typeface.createFromAsset(getAssets(),"fonts/dear_joe.ttf");
+        title_toolbar.setTypeface(MyCustomFont);
+
         NewsfeedListAdapter nwsfListAdapter = new NewsfeedListAdapter(this, username, songTitle, rating, images);
         setListAdapter(nwsfListAdapter);
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_newsfeed);
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_newsfeed);
         navigationView.setNavigationItemSelectedListener(this);
 
 
@@ -48,7 +51,7 @@ public class Newsfeed extends ListActivity
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_newsfeed);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
 
@@ -109,12 +112,12 @@ public class Newsfeed extends ListActivity
             startActivity(next_layout);
 
         } else if (id == R.id.nav_marketplace) {
-            Intent next_layout = new Intent(getApplicationContext(), MarketPlace.class);
+            Intent next_layout = new Intent(getApplicationContext(), Marketplace.class);
             onPause();
             startActivity(next_layout);
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_newsfeed);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }

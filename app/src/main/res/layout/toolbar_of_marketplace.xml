@@ -7,7 +7,7 @@
     tools:context=".MarketPlace">
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/toolbarOfMarketplace"
         app:theme="@style/AppTheme.PopupOverlay"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
@@ -22,10 +22,11 @@
             android:textSize="25dp"
             android:textColor="@color/black"
             android:layout_gravity="center"
-            android:id="@+id/title"
+            android:id="@+id/toolbarTitleMarketplace"
+            android:typeface="sans"
             android:textStyle="bold" />
     </android.support.v7.widget.Toolbar>
 
-    <include layout="@layout/content_market_place" />
+    <include layout="@layout/content_marketplace" />
 
 </android.support.design.widget.CoordinatorLayout>
