@@ -4,11 +4,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" android:fitsSystemWindows="true"
-    tools:context=".MarketPlace"
-    android:background="@drawable/picture_start">
+    tools:context=".MarketPlace">
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/toolbarOfMarketplace"
         app:theme="@style/AppTheme.PopupOverlay"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
@@ -24,6 +23,7 @@
             android:textColor="@color/black"
             android:layout_gravity="center"
             android:id="@+id/toolbarTitleMarketplace"
+            android:typeface="sans"
             android:textStyle="bold" />
     </android.support.v7.widget.Toolbar>
 

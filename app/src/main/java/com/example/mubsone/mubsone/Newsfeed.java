@@ -31,7 +31,7 @@ public class Newsfeed extends ListActivity
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_newsfeed);
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_newsfeed);
         navigationView.setNavigationItemSelectedListener(this);
 
 
