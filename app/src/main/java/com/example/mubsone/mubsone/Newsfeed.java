@@ -2,17 +2,21 @@ package com.example.mubsone.mubsone;
 
 import android.app.ListActivity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
 
-public class Newsfeed extends ListActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class Newsfeed extends ListActivity implements NavigationView.OnNavigationItemSelectedListener {
+    private TextView title_toolbar;
 
     String [] username ={"jv21", "AndyMatrix", "brajansaraci", "mikelv92"};
     String [] songTitle ={"Grizzly Bear", "Hotline Bling", "I ran away", "Sex on fire"};
@@ -25,6 +29,14 @@ public class Newsfeed extends ListActivity
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_newsfeed);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarOfNewsfeed);
+
+        toolbar.setVisibility(View.VISIBLE);
+        //arsing the font for the title toolbar
+        title_toolbar=(TextView)toolbar.findViewById(R.id.toolbarTitleNewsfeed);
+        Typeface MyCustomFont = Typeface.createFromAsset(getAssets(),"fonts/dear_joe.ttf");
+        title_toolbar.setTypeface(MyCustomFont);
 
         NewsfeedListAdapter nwsfListAdapter = new NewsfeedListAdapter(this, username, songTitle, rating, images);
         setListAdapter(nwsfListAdapter);

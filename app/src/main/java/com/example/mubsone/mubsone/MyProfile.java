@@ -1,6 +1,7 @@
 package com.example.mubsone.mubsone;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,10 +15,11 @@ import android.view.WindowManager;
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MyProfile extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, AdapterView.OnItemClickListener {
-
+    private TextView title_toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +28,13 @@ public class MyProfile extends AppCompatActivity implements NavigationView.OnNav
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_profile);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarOfProfile);
+
+        toolbar.setVisibility(View.VISIBLE);
+        //arsing the font for the title toolbar
+        title_toolbar=(TextView)toolbar.findViewById(R.id.toolbarTitleProfile);
+        Typeface MyCustomFont = Typeface.createFromAsset(getAssets(),"fonts/dear_joe.ttf");
+        title_toolbar.setTypeface(MyCustomFont);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_profile);
 

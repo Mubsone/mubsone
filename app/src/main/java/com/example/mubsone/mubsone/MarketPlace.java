@@ -27,6 +27,13 @@ public class MarketPlace extends AppCompatActivity implements NavigationView.OnN
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_market_place);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarOfMarketplace);
+        toolbar.setVisibility(View.VISIBLE);
+        //arsing the font for the title toolbar
+        title_toolbar=(TextView)toolbar.findViewById(R.id.toolbarTitleMarketplace);
+        Typeface MyCustomFont = Typeface.createFromAsset(getAssets(),"fonts/dear_joe.ttf");
+        title_toolbar.setTypeface(MyCustomFont);
+
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_marketplace);
