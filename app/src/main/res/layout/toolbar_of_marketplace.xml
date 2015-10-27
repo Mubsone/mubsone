@@ -27,6 +27,6 @@
             android:textStyle="bold" />
     </android.support.v7.widget.Toolbar>
 
-    <include layout="@layout/content_market_place" />
+    <include layout="@layout/content_marketplace" />
 
 </android.support.design.widget.CoordinatorLayout>

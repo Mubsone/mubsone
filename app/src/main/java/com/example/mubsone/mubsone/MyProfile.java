@@ -12,7 +12,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.TextView;
@@ -76,7 +75,7 @@ public class MyProfile extends AppCompatActivity implements NavigationView.OnNav
             startActivity(next_layout);
 
         } else if (id == R.id.nav_marketplace) {
-            Intent next_layout = new Intent(getApplicationContext(), MarketPlace.class);
+            Intent next_layout = new Intent(getApplicationContext(), Marketplace.class);
             onPause();
             startActivity(next_layout);
         }

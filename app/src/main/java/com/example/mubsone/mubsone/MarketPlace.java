@@ -1,11 +1,10 @@
 package com.example.mubsone.mubsone;
 
+import android.app.ListActivity;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -16,8 +15,10 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
 
-public class MarketPlace extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class Marketplace extends ListActivity implements NavigationView.OnNavigationItemSelectedListener{
     private TextView title_toolbar;
+    String [] itemNames = {"Microphone","Guitar","Camera","Audio Mixer","Microphone","Guitar","Camera","Audio Mixer","Microphone","Guitar","Camera","Audio Mixer"};
+    int[] itemPhoto = {R.drawable.audio_input_microphone, R.drawable.fire_guitar, R.drawable.camera_unmount2, R.drawable.mixer, R.drawable.audio_input_microphone, R.drawable.fire_guitar, R.drawable.camera_unmount2, R.drawable.mixer, R.drawable.audio_input_microphone, R.drawable.fire_guitar, R.drawable.camera_unmount2, R.drawable.mixer};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //full screen aplication
@@ -34,7 +35,8 @@ public class MarketPlace extends AppCompatActivity implements NavigationView.OnN
         Typeface MyCustomFont = Typeface.createFromAsset(getAssets(),"fonts/dear_joe.ttf");
         title_toolbar.setTypeface(MyCustomFont);
 
-
+        MarketplaceListAdapter mpfListAdapter = new MarketplaceListAdapter(this,itemNames, itemPhoto);
+        setListAdapter(mpfListAdapter);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_marketplace);
 
@@ -69,7 +71,7 @@ public class MarketPlace extends AppCompatActivity implements NavigationView.OnN
             startActivity(next_layout);
 
         } else if (id == R.id.nav_marketplace) {
-            Intent next_layout = new Intent(getApplicationContext(), MarketPlace.class);
+            Intent next_layout = new Intent(getApplicationContext(), Marketplace.class);
             onPause();
             startActivity(next_layout);
         }
