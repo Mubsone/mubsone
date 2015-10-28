@@ -1,60 +1,87 @@
 package com.example.mubsone.mubsone;
 
-import android.app.ListActivity;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-
-public class Notifications extends ListActivity implements NavigationView.OnNavigationItemSelectedListener {
-    String [] names = {"comment_icon", "description_icon", "viewer_icon", "share_icon","comment_icon", "description_icon", "viewer_icon", "share_icon","comment_icon", "description_icon", "viewer_icon", "share_icon","comment_icon", "description_icon", "viewer_icon", "share_icon","comment_icon", "description_icon", "viewer_icon", "share_icon","comment_icon", "description_icon", "viewer_icon", "share_icon","comment_icon", "description_icon", "viewer_icon", "share_icon"};
-    int [] images = {R.mipmap.ic_new_comment, R.mipmap.ic_new_description, R.mipmap.ic_new_viewer, R.mipmap.ic_new_share,R.mipmap.ic_new_comment, R.mipmap.ic_new_description, R.mipmap.ic_new_viewer, R.mipmap.ic_new_share,R.mipmap.ic_new_comment, R.mipmap.ic_new_description, R.mipmap.ic_new_viewer, R.mipmap.ic_new_share,R.mipmap.ic_new_comment, R.mipmap.ic_new_description, R.mipmap.ic_new_viewer, R.mipmap.ic_new_share,R.mipmap.ic_new_comment, R.mipmap.ic_new_description, R.mipmap.ic_new_viewer, R.mipmap.ic_new_share,R.mipmap.ic_new_comment, R.mipmap.ic_new_description, R.mipmap.ic_new_viewer, R.mipmap.ic_new_share,R.mipmap.ic_new_comment, R.mipmap.ic_new_description, R.mipmap.ic_new_viewer, R.mipmap.ic_new_share};
+/**
+ * Created by bsaraci on 10/26/2015.
+ */
+public class Search extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private TextView title_toolbar;
 
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         //full screen aplication
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_notifications);
+        setContentView(R.layout.activity_search);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarOfNotifications);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarOfSearch);
 
         toolbar.setVisibility(View.VISIBLE);
         //arsing the font for the title toolbar
-        title_toolbar=(TextView)toolbar.findViewById(R.id.toolbarTitleNotifications);
+        title_toolbar=(TextView)toolbar.findViewById(R.id.toolbarTitleSearch);
         Typeface MyCustomFont = Typeface.createFromAsset(getAssets(),"fonts/dear_joe.ttf");
         title_toolbar.setTypeface(MyCustomFont);
 
-        //Create and set up adapter
-        NotificationListAdapter ntfListAdapter = new NotificationListAdapter(this, names, images);
-        setListAdapter(ntfListAdapter);
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_notifications);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_search);
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_notifications);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_search);
         navigationView.setNavigationItemSelectedListener(this);
 
+
     }
 
-    //The actionListener of the list. So for each notification it will have a different condition
-    protected void onListItemClick(ListView l, View v, int position, long id){
-        Toast.makeText(this, l.getItemAtPosition(position).toString(), Toast.LENGTH_SHORT).show();
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_newsfeed);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+
+        } else {
+            super.onBackPressed();
+        }
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
     public boolean onNavigationItemSelected(MenuItem item) {
+
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
@@ -62,6 +89,7 @@ public class Notifications extends ListActivity implements NavigationView.OnNavi
             Intent next_layout = new Intent(getApplicationContext(), Search.class);
             onPause();
             startActivity(next_layout);
+
         } else if (id == R.id.nav_newsfeed) {
             Intent next_layout = new Intent(getApplicationContext(), Newsfeed.class);
             onPause();
@@ -87,7 +115,7 @@ public class Notifications extends ListActivity implements NavigationView.OnNavi
             startActivity(next_layout);
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_notifications);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_search);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }

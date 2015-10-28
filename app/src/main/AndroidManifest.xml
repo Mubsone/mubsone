@@ -40,16 +40,17 @@
         </activity>
         <activity
             android:name=".MyProfile"
-            android:label="@string/title_activity_my_profile"
+            android:label="mubsone"
             android:parentActivityName=".Newsfeed"
-            android:theme="@style/AppTheme" >
+            android:theme="@style/AppTheme.NoActionBar" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Newsfeed" />
         </activity>
         <activity
-            android:name=".Settings"
-            android:label="@string/title_activity_settings" >
+            android:name=".Search"
+            android:label="mubsone"
+            android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
             android:name=".Marketplace"

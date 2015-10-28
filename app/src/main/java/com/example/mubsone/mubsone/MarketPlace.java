@@ -50,7 +50,9 @@ public class Marketplace extends ListActivity implements NavigationView.OnNaviga
         int id = item.getItemId();
 
         if (id == R.id.nav_search) {
-            // Handle the camera action
+            Intent next_layout = new Intent(getApplicationContext(), Search.class);
+            onPause();
+            startActivity(next_layout);
         } else if (id == R.id.nav_newsfeed) {
             Intent next_layout = new Intent(getApplicationContext(), Newsfeed.class);
             onPause();
