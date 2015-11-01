@@ -6,10 +6,9 @@
     android:id="@+id/drawer_layout_newsfeed"
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:fitsSystemWindows="true" tools:openDrawer="start"
+    android:background="@color/white"
     app:openDescription="@string/navigation_drawer_open"
-    app:closeDescription="@string/navigation_drawer_close"
-    app:blurRadius="25"
-    app:downScaleFactor="0.001">
+    app:closeDescription="@string/navigation_drawer_close">
 
     <include layout="@layout/toolbar_of_newsfeed" android:layout_width="match_parent"
         android:layout_height="match_parent" />

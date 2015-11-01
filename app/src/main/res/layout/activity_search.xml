@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools" android:id="@+id/drawer_layout_search"
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:fitsSystemWindows="true" tools:openDrawer="start"
+    android:background="@color/white"
     app:openDescription="@string/navigation_drawer_open"
     app:closeDescription="@string/navigation_drawer_close"
-    app:blurRadius="25"
-    app:downScaleFactor="0.001">
-    
+    >
+
         <include
             android:id="@+id/toolbarSearch"
             layout="@layout/toolbar_of_search" android:layout_width="match_parent"

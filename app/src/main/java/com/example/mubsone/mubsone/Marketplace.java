@@ -52,8 +52,8 @@ public class Marketplace extends ListActivity implements NavigationView.OnNaviga
                 R.string.navigation_drawer_close  /* "close drawer" description for accessibility */
         );
 
-        mDrawerToggle.setRadius(15);
-        mDrawerToggle.setDownScaleFactor(6.0f);
+        mDrawerToggle.setRadius(25);
+        mDrawerToggle.setDownScaleFactor(0.0f);
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_marketplace);
         navigationView.setNavigationItemSelectedListener(this);
