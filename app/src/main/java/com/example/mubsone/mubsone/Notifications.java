@@ -2,6 +2,7 @@ package com.example.mubsone.mubsone;
 
 import android.app.ListActivity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -43,6 +44,7 @@ public class Notifications extends ListActivity implements NavigationView.OnNavi
         setListAdapter(ntfListAdapter);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_notifications);
+        drawer.setScrimColor(Color.TRANSPARENT);
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_notifications);
         navigationView.setNavigationItemSelectedListener(this);

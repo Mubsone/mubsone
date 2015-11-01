@@ -1,6 +1,7 @@
 package com.example.mubsone.mubsone;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -36,6 +37,7 @@ public class MyProfile extends AppCompatActivity implements NavigationView.OnNav
         title_toolbar.setTypeface(MyCustomFont);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_profile);
+        drawer.setScrimColor(Color.TRANSPARENT);
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_profile);
         navigationView.setNavigationItemSelectedListener(this);

@@ -3,13 +3,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools" android:id="@+id/drawer_layout_search"
     android:layout_width="match_parent" android:layout_height="match_parent"
-    android:fitsSystemWindows="true" tools:openDrawer="start"
-    android:background="@android:color/transparent" >
+    android:fitsSystemWindows="true" tools:openDrawer="start">
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".Search">
 
-    <include
-        android:id="@+id/toolbarSearch"
-        layout="@layout/toolbar_of_search" android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        <include
+            android:id="@+id/toolbarSearch"
+            layout="@layout/toolbar_of_search" android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <com.example.mubsone.mubsone.tabs.SlidingTabLayout
+            android:id="@+id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <android.support.v4.view.ViewPager
+            android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
 
     <android.support.design.widget.NavigationView
         android:layout_width="60dp"

@@ -1,25 +1,37 @@
 package com.example.mubsone.mubsone;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
+
 
 /**
  * Created by bsaraci on 10/26/2015.
  */
 public class Search extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private TextView title_toolbar;
+    private ViewPager mPager;
 
     protected void onCreate(Bundle savedInstanceState) {
         //full screen aplication
@@ -29,7 +41,6 @@ public class Search extends AppCompatActivity implements NavigationView.OnNaviga
         setContentView(R.layout.activity_search);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarOfSearch);
-
         toolbar.setVisibility(View.VISIBLE);
         //arsing the font for the title toolbar
         title_toolbar=(TextView)toolbar.findViewById(R.id.toolbarTitleSearch);
@@ -38,7 +49,7 @@ public class Search extends AppCompatActivity implements NavigationView.OnNaviga
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_search);
-
+        drawer.setScrimColor(Color.TRANSPARENT);
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_search);
         navigationView.setNavigationItemSelectedListener(this);
 

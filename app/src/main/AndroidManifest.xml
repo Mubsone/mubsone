@@ -37,6 +37,9 @@
             android:name=".Notifications"
             android:label="mubsone"
             android:theme="@style/AppTheme.NoActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Newsfeed" />
         </activity>
         <activity
             android:name=".MyProfile"
@@ -49,13 +52,19 @@
         </activity>
         <activity
             android:name=".Search"
-            android:label="mubsone"
+            android:label="Search"
             android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Newsfeed" />
         </activity>
         <activity
             android:name=".Marketplace"
             android:label="@string/title_activity_market_place"
             android:theme="@style/AppTheme" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Newsfeed" />
         </activity>
     </application>
 

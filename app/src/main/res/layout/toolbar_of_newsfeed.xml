@@ -11,16 +11,15 @@
         app:theme="@style/AppTheme.PopupOverlay"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@drawable/toolbar_new_1"
-        android:gravity="center"
-        app:titleTextColor="@color/white">
+        android:background="@color/colorPrimary"
+        android:gravity="center">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Cover Page"
             android:textSize="25dp"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:layout_gravity="center"
             android:id="@+id/toolbarTitleNewsfeed"
             android:typeface="sans"

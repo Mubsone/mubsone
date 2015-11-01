@@ -11,14 +11,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.HashMap;
+
 public class LogIn extends AppCompatActivity {
     //declare all the TextViewer on the main page
     private TextView [] id_text= new TextView [4];
     private EditText [] id_edit=new EditText [5];
     private String [] String_id_edit=new String [id_edit.length];
-    private Button log_in_now;
-    private Users NewUser;
-
+    private Button logIn;
+    private User newUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //full screen aplication
@@ -28,10 +29,10 @@ public class LogIn extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.start_app);
 
-
         change_fonts();
         press_the_button(false);  //error here //next time i need to solve
         check_interface();
+
     }
     //assign all the edit text for the sing in
     public void sing_in_now(boolean x) {
@@ -50,21 +51,21 @@ public class LogIn extends AppCompatActivity {
             for (int i=2; i<id_edit.length; i++){
                 id_edit[i].setVisibility(View.VISIBLE);
             }
-            log_in_now.setText(getResources().getString(R.string.sign_up));
+            logIn.setText(getResources().getString(R.string.sign_up));
         }else {
             id_text[1].setTextColor(getResources().getColor(R.color.white));
             id_text[2].setTextColor(getResources().getColor(R.color.white_log));
             for (int i=0; i<2; i++){
                 id_edit[i].setVisibility(View.VISIBLE);
-                id_edit[i].setVisibility(View.VISIBLE);
             }
             for (int i=2; i<id_edit.length; i++){
                 id_edit[i].setVisibility(View.GONE);
             }
-            log_in_now.setText(getResources().getString(R.string.log_in));
+            logIn.setText(getResources().getString(R.string.log_in));
         }
     }
-    public void check_interface() {
+    public boolean check_interface() {
+        boolean x = true;
         //for the log in text
         id_text [2].setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,6 +82,7 @@ public class LogIn extends AppCompatActivity {
                 press_the_button(false);
             }
         });
+        return x;
     }
     //optimize the setting here.
     public void change_fonts(){
@@ -92,20 +94,32 @@ public class LogIn extends AppCompatActivity {
         for (int i=0; i<id_text.length; i++) {
             id_text[i].setTypeface(MyCustomFont);
         }
-        log_in_now= (Button)findViewById(R.id.button0);
+        logIn= (Button)findViewById(R.id.button0);
     }
     //optimize  later :-//
     public void press_the_button(boolean x) {
         if (x) {
-            log_in_now.setOnClickListener(new View.OnClickListener() {
+            logIn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     //start a new layout for you
-                    for (int i=0; i<id_edit.length; i++){
-                        String_id_edit [i]= id_edit[i].getText().toString();
-                    }
+                    //for (int i=0; i<id_edit.length; i++){
+                        //String_id_edit [i]= id_edit[i].getText().toString();
+                    //}
                     //just a test
-                    NewUser=new Users(1, String_id_edit [0] , String_id_edit [1] ,  String_id_edit [2],   String_id_edit [3] , String_id_edit [4], 0 , 0," " ,false , false, false);
+                    //NewUser=new User(1, String_id_edit [0] , String_id_edit [1] ,  String_id_edit [2],   String_id_edit [3] , String_id_edit [4], 0 , 0," " ,false , false, false);
+
+                    //Test of connect method (performPostCall)
+                    String requestUrl = "http://10.0.2.2:8000/accounts/login";
+                    String username = (String)findViewById(R.id.edittext0).getTag();
+                    String password = (String)findViewById(R.id.edittext1).getTag();
+
+                    HashMap<String, String> postDataParams = new HashMap<String, String>(2);
+                    postDataParams.put("username",username);
+                    postDataParams.put("password",password);
+
+                    newUser.performPostCall(requestUrl,postDataParams);
+
                     Intent next_layout = new Intent(getApplicationContext(), Newsfeed.class);
                     onPause();
                     startActivity(next_layout);
@@ -113,7 +127,7 @@ public class LogIn extends AppCompatActivity {
             });
         }else {
             //take the user things
-            log_in_now.setOnClickListener(new View.OnClickListener() {
+            logIn.setOnClickListener(new View.OnClickListener() {
                 //the servers information still here
                 @Override
                 public void onClick(View v) {
