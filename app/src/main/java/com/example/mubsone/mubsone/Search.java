@@ -25,6 +25,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
 
+import com.example.mubsone.mubsone.Blur.BlurActionBarDrawerToggle;
+
 
 /**
  * Created by bsaraci on 10/26/2015.
@@ -32,6 +34,7 @@ import android.widget.TextView;
 public class Search extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private TextView title_toolbar;
     private ViewPager mPager;
+    private BlurActionBarDrawerToggle mDrawerToggle;
 
     protected void onCreate(Bundle savedInstanceState) {
         //full screen aplication
@@ -50,6 +53,17 @@ public class Search extends AppCompatActivity implements NavigationView.OnNaviga
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_search);
         drawer.setScrimColor(Color.TRANSPARENT);
+
+        mDrawerToggle = new BlurActionBarDrawerToggle(
+                this,                    /* host Activity */
+                drawer,                    /* DrawerLayout object */
+                R.string.navigation_drawer_open,  /* "open drawer" description for accessibility */
+                R.string.navigation_drawer_close  /* "close drawer" description for accessibility */
+        );
+
+        mDrawerToggle.setRadius(15);
+        mDrawerToggle.setDownScaleFactor(6.0f);
+
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_search);
         navigationView.setNavigationItemSelectedListener(this);
 

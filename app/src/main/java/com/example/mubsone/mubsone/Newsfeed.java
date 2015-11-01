@@ -54,8 +54,8 @@ public class Newsfeed extends ListActivity implements NavigationView.OnNavigatio
                 R.string.navigation_drawer_close  /* "close drawer" description for accessibility */
         );
 
-        mDrawerToggle.setRadius(100000);
-        mDrawerToggle.setDownScaleFactor(150.0f);
+        mDrawerToggle.setRadius(15);
+        mDrawerToggle.setDownScaleFactor(6.0f);
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_newsfeed);
         navigationView.setNavigationItemSelectedListener(this);

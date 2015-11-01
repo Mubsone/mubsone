@@ -17,11 +17,14 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.mubsone.mubsone.Blur.BlurActionBarDrawerToggle;
+
 
 public class Notifications extends ListActivity implements NavigationView.OnNavigationItemSelectedListener {
     String [] names = {"comment_icon", "description_icon", "viewer_icon", "share_icon","comment_icon", "description_icon", "viewer_icon", "share_icon","comment_icon", "description_icon", "viewer_icon", "share_icon","comment_icon", "description_icon", "viewer_icon", "share_icon","comment_icon", "description_icon", "viewer_icon", "share_icon","comment_icon", "description_icon", "viewer_icon", "share_icon","comment_icon", "description_icon", "viewer_icon", "share_icon"};
     int [] images = {R.mipmap.ic_new_comment, R.mipmap.ic_new_description, R.mipmap.ic_new_viewer, R.mipmap.ic_new_share,R.mipmap.ic_new_comment, R.mipmap.ic_new_description, R.mipmap.ic_new_viewer, R.mipmap.ic_new_share,R.mipmap.ic_new_comment, R.mipmap.ic_new_description, R.mipmap.ic_new_viewer, R.mipmap.ic_new_share,R.mipmap.ic_new_comment, R.mipmap.ic_new_description, R.mipmap.ic_new_viewer, R.mipmap.ic_new_share,R.mipmap.ic_new_comment, R.mipmap.ic_new_description, R.mipmap.ic_new_viewer, R.mipmap.ic_new_share,R.mipmap.ic_new_comment, R.mipmap.ic_new_description, R.mipmap.ic_new_viewer, R.mipmap.ic_new_share,R.mipmap.ic_new_comment, R.mipmap.ic_new_description, R.mipmap.ic_new_viewer, R.mipmap.ic_new_share};
     private TextView title_toolbar;
+    private BlurActionBarDrawerToggle mDrawerToggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +48,15 @@ public class Notifications extends ListActivity implements NavigationView.OnNavi
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_notifications);
         drawer.setScrimColor(Color.TRANSPARENT);
+        mDrawerToggle = new BlurActionBarDrawerToggle(
+                this,                    /* host Activity */
+                drawer,                    /* DrawerLayout object */
+                R.string.navigation_drawer_open,  /* "open drawer" description for accessibility */
+                R.string.navigation_drawer_close  /* "close drawer" description for accessibility */
+        );
+
+        mDrawerToggle.setRadius(15);
+        mDrawerToggle.setDownScaleFactor(6.0f);
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_notifications);
         navigationView.setNavigationItemSelectedListener(this);

@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.example.mubsone.mubsone.Blur.BlurDrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.example.mubsone.mubsone.Blur.BlurDrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:blurRadius="0"
-    app:downScaleFactor="0.0"
     android:id="@+id/drawer_layout_newsfeed"
     android:layout_width="match_parent" android:layout_height="match_parent"
-    android:fitsSystemWindows="true" tools:openDrawer="start">
+    android:fitsSystemWindows="true" tools:openDrawer="start"
+    app:openDescription="@string/navigation_drawer_open"
+    app:closeDescription="@string/navigation_drawer_close"
+    app:blurRadius="25"
+    app:downScaleFactor="0.001">
 
     <include layout="@layout/toolbar_of_newsfeed" android:layout_width="match_parent"
         android:layout_height="match_parent" />

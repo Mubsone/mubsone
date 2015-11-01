@@ -18,8 +18,11 @@ import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.mubsone.mubsone.Blur.BlurActionBarDrawerToggle;
+
 public class MyProfile extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, AdapterView.OnItemClickListener {
     private TextView title_toolbar;
+    private BlurActionBarDrawerToggle mDrawerToggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +41,16 @@ public class MyProfile extends AppCompatActivity implements NavigationView.OnNav
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_profile);
         drawer.setScrimColor(Color.TRANSPARENT);
+
+        mDrawerToggle = new BlurActionBarDrawerToggle(
+                this,                    /* host Activity */
+                drawer,                    /* DrawerLayout object */
+                R.string.navigation_drawer_open,  /* "open drawer" description for accessibility */
+                R.string.navigation_drawer_close  /* "close drawer" description for accessibility */
+        );
+
+        mDrawerToggle.setRadius(15);
+        mDrawerToggle.setDownScaleFactor(6.0f);
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_profile);
         navigationView.setNavigationItemSelectedListener(this);

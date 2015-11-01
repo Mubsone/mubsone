@@ -16,10 +16,13 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
 
+import com.example.mubsone.mubsone.Blur.BlurActionBarDrawerToggle;
+
 public class Marketplace extends ListActivity implements NavigationView.OnNavigationItemSelectedListener{
     private TextView title_toolbar;
     String [] itemNames = {"Microphone","Guitar","Camera","Audio Mixer","Microphone","Guitar","Camera","Audio Mixer","Microphone","Guitar","Camera","Audio Mixer"};
     int[] itemPhoto = {R.drawable.audio_input_microphone, R.drawable.fire_guitar, R.drawable.camera_unmount2, R.drawable.mixer, R.drawable.audio_input_microphone, R.drawable.fire_guitar, R.drawable.camera_unmount2, R.drawable.mixer, R.drawable.audio_input_microphone, R.drawable.fire_guitar, R.drawable.camera_unmount2, R.drawable.mixer};
+    private BlurActionBarDrawerToggle mDrawerToggle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //full screen aplication
@@ -41,6 +44,16 @@ public class Marketplace extends ListActivity implements NavigationView.OnNaviga
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_marketplace);
         drawer.setScrimColor(Color.TRANSPARENT);
+
+        mDrawerToggle = new BlurActionBarDrawerToggle(
+                this,                    /* host Activity */
+                drawer,                    /* DrawerLayout object */
+                R.string.navigation_drawer_open,  /* "open drawer" description for accessibility */
+                R.string.navigation_drawer_close  /* "close drawer" description for accessibility */
+        );
+
+        mDrawerToggle.setRadius(15);
+        mDrawerToggle.setDownScaleFactor(6.0f);
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_marketplace);
         navigationView.setNavigationItemSelectedListener(this);
