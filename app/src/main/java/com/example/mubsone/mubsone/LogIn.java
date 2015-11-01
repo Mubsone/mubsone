@@ -9,10 +9,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
 
-import java.io.BufferedInputStream;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import java.util.HashMap;
 
 public class LogIn extends AppCompatActivity {
     public static final String loginURL = "http://10.0.2.2:8000/accounts/login";
@@ -50,7 +47,7 @@ public class LogIn extends AppCompatActivity {
 
         String username = usernameEditText.getText().toString();
         String password = passwordEditText.getText().toString();
-
+        Log.i("username", username);
         sendGETLoginRequest(loginURL, username, password);
 
         startActivity(intent);
@@ -58,7 +55,14 @@ public class LogIn extends AppCompatActivity {
 
     public void sendGETLoginRequest(String requestUrl, String username, String password)
     {
-        new LoginTask().execute();
+        HashMap<String, String> map = new HashMap<String, String>();
+        map.put("username", username);
+        map.put("password", password);
+        HttpRequestParams params = new HttpRequestParams(loginURL, "POST", map);
+        Log.i("Username:", params.getParams().get("username"));
+        Log.i("Password:", params.getParams().get("password"));
+
+        new HttpPOSTRequestTask().execute(params);
     }
 
     //assign all the edit text for the sing in
