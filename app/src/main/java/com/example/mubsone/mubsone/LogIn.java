@@ -1,25 +1,29 @@
 package com.example.mubsone.mubsone;
 
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
-import java.util.HashMap;
+import java.io.BufferedInputStream;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 public class LogIn extends AppCompatActivity {
+    public static final String loginURL = "http://10.0.2.2:8000/accounts/login";
     //declare all the TextViewer on the main page
+/*
     private TextView [] id_text= new TextView [4];
     private EditText [] id_edit=new EditText [5];
     private String [] String_id_edit=new String [id_edit.length];
     private Button logIn;
     private User newUser;
+*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //full screen aplication
@@ -29,19 +33,43 @@ public class LogIn extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.start_app);
 
+/*
         change_fonts();
         press_the_button(false);  //error here //next time i need to solve
         check_interface();
+*/
 
     }
+
+    public void loginHomeButtonCallback(View view)
+    {
+        Intent intent = new Intent(this, Newsfeed.class);
+
+        EditText usernameEditText = (EditText) findViewById(R.id.usernameLoginPageEditText);
+        EditText passwordEditText = (EditText) findViewById(R.id.passwordLoginPageEditText);
+
+        String username = usernameEditText.getText().toString();
+        String password = passwordEditText.getText().toString();
+
+        sendGETLoginRequest(loginURL, username, password);
+
+        startActivity(intent);
+    }
+
+    public void sendGETLoginRequest(String requestUrl, String username, String password)
+    {
+        new LoginTask().execute();
+    }
+
     //assign all the edit text for the sing in
+/*
     public void sing_in_now(boolean x) {
         //?! assign easy
         if (x){
             id_text[2].setTextColor(getResources().getColor(R.color.white));
             id_text[1].setTextColor(getResources().getColor(R.color.white_log));
-            id_edit [0]=(EditText)findViewById(R.id.edittext0);
-            id_edit [1]=(EditText)findViewById(R.id.edittext1);
+            id_edit [0]=(EditText)findViewById(R.id.loginUsernameHomeEditText);
+            id_edit [1]=(EditText)findViewById(R.id.passwordHomeEditText);
             id_edit [2]=(EditText)findViewById(R.id.edittext2);
             id_edit [3]=(EditText)findViewById(R.id.edittext3);
             id_edit [4]=(EditText)findViewById(R.id.edittext4);
@@ -86,15 +114,15 @@ public class LogIn extends AppCompatActivity {
     }
     //optimize the setting here.
     public void change_fonts(){
-        id_text [0] = (TextView) findViewById(R.id.text0);
-        id_text [1] = (TextView) findViewById(R.id.text2);
-        id_text [2] = (TextView) findViewById(R.id.text3);
+        id_text [0] = (TextView) findViewById(R.id.mubsoneHomeHeader);
+        id_text [1] = (TextView) findViewById(R.id.loginHomeTextView);
+        id_text [2] = (TextView) findViewById(R.id.signupHomeButton);
         id_text [3] = (TextView) findViewById(R.id.text4);
         Typeface MyCustomFont = Typeface.createFromAsset(getAssets(),"fonts/dear_joe.ttf");
         for (int i=0; i<id_text.length; i++) {
             id_text[i].setTypeface(MyCustomFont);
         }
-        logIn= (Button)findViewById(R.id.button0);
+        logIn= (Button)findViewById(R.id.loginHomeButton);
     }
     //optimize  later :-//
     public void press_the_button(boolean x) {
@@ -104,27 +132,64 @@ public class LogIn extends AppCompatActivity {
                 public void onClick(View v) {
                     //start a new layout for you
                     //for (int i=0; i<id_edit.length; i++){
-                        //String_id_edit [i]= id_edit[i].getText().toString();
+                    //String_id_edit [i]= id_edit[i].getText().toString();
                     //}
                     //just a test
                     //NewUser=new User(1, String_id_edit [0] , String_id_edit [1] ,  String_id_edit [2],   String_id_edit [3] , String_id_edit [4], 0 , 0," " ,false , false, false);
 
                     //Test of connect method (performPostCall)
-                    String requestUrl = "http://10.0.2.2:8000/accounts/login";
-                    String username = (String)findViewById(R.id.edittext0).getTag();
-                    String password = (String)findViewById(R.id.edittext1).getTag();
+                    String requestUrl = "http://10.0.2.2:8000/accounts/login/";
+                    String username = (String) findViewById(R.id.loginUsernameHomeEditText).getTag();
+                    String password = (String) findViewById(R.id.passwordHomeEditText).getTag();
 
-                    HashMap<String, String> postDataParams = new HashMap<String, String>(2);
-                    postDataParams.put("username",username);
-                    postDataParams.put("password",password);
+                    try {
+                        URL url = new URL(requestUrl);
+                        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
-                    newUser.performPostCall(requestUrl,postDataParams);
+                        conn.setReadTimeout(10000);
+                        conn.setConnectTimeout(15000);
+                        conn.setRequestMethod("GET");
+                        conn.setDoInput(true);
+                        conn.setDoOutput(true);
 
-                    Intent next_layout = new Intent(getApplicationContext(), Newsfeed.class);
-                    onPause();
-                    startActivity(next_layout);
-                }
-            });
+                        String response = "";
+
+                        OutputStream os = conn.getOutputStream();
+                        BufferedWriter writer = new BufferedWriter(
+                                new OutputStreamWriter(os, "UTF-8"));
+                        HashMap<String, String> params = new HashMap<String, String>();
+
+                        params.put("username", username);
+                        params.put("password", password);
+
+                        writer.write(getPostData(params));
+
+
+                        writer.flush();
+                        writer.close();
+                        os.close();
+                        int responseCode = conn.getResponseCode();
+
+                        if (responseCode == HttpsURLConnection.HTTP_OK) {
+                            String line;
+                            BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                            while ((line = br.readLine()) != null) {
+                                response += line;
+                            }
+                        } else {
+                            response = "";
+                        }
+                        Log.i("Response", response);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                Intent next_layout = new Intent(getApplicationContext(), Newsfeed.class);
+
+                onPause();
+
+                startActivity(next_layout);
+            }
+        });
         }else {
             //take the user things
             logIn.setOnClickListener(new View.OnClickListener() {
@@ -138,8 +203,22 @@ public class LogIn extends AppCompatActivity {
                 }
             });
         }
-
-
-
     }
+    private String getPostData(HashMap<String, String> params) throws UnsupportedEncodingException {
+        StringBuilder result = new StringBuilder();
+        boolean first = true;
+        for(Map.Entry<String, String> entry : params.entrySet()){
+            if (first)
+                first = false;
+            else
+                result.append("&");
+
+            result.append(URLEncoder.encode(entry.getKey(), "UTF-8"));
+            result.append("=");
+            result.append(URLEncoder.encode(entry.getValue(), "UTF-8"));
+        }
+
+        return result.toString();
+    }
+*/
 }

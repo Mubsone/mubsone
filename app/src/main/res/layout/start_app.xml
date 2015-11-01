@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimary">
 
+<!--
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -15,6 +16,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"/>
+-->
 
     <ImageView
         android:layout_width="wrap_content"
@@ -29,7 +31,7 @@
         android:layout_marginTop="80dp"
         android:id="@+id/linearLayout"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/text0">
+        android:layout_below="@+id/mubsoneHomeHeader">
 
 
         <LinearLayout
@@ -38,28 +40,18 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/log_in"
-                android:textColor="@color/white"
-                android:paddingLeft="30dp"
-                android:id="@+id/text2"
-                android:clickable="true"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/sign_up"
-                android:id="@+id/text3"
-                android:textColor="@color/white_log"
-                android:singleLine="false"
-                android:paddingLeft="100dp"
-                android:clickable="true"
-                />
         </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/log_in"
+            android:textColor="@color/white"
+            android:paddingLeft="30dp"
+            android:id="@+id/loginHomeTextView"
+            android:clickable="false"
+            android:layout_gravity="center_horizontal" />
 
         <EditText
             android:layout_width="match_parent"
@@ -67,7 +59,7 @@
             android:inputType="textPersonName"
             android:hint="@string/user_name"
             android:ems="12"
-            android:id="@+id/edittext0"
+            android:id="@+id/usernameLoginPageEditText"
             android:textColorHint="@color/white_log"
             android:textColor="@color/black"
             android:layout_marginTop="15dp"
@@ -80,7 +72,7 @@
             android:inputType="textPassword"
             android:hint="@string/password"
             android:ems="16"
-            android:id="@+id/edittext1"
+            android:id="@+id/passwordLoginPageEditText"
             android:layout_marginTop="10dp"
             android:background="@drawable/white_bar"
             android:textColorHint="@color/white_log"
@@ -88,6 +80,7 @@
             android:textAlignment="inherit"
             android:paddingLeft="8dp"
             android:visibility="visible"/>
+<!--
         <EditText
             android:layout_width="253dp"
             android:layout_height="40dp"
@@ -127,12 +120,14 @@
             android:textAlignment="inherit"
             android:paddingLeft="8dp"
             android:visibility="gone"/>
+-->
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/log_in"
-            android:id="@+id/button0"
-            android:layout_gravity="center_horizontal" />
+            android:id="@+id/loginHomeButton"
+            android:layout_gravity="center_horizontal"
+            android:onClick="loginHomeButtonCallback"/>
 
 
     </LinearLayout>
@@ -143,12 +138,13 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/app_name"
-        android:id="@+id/text0"
+        android:id="@+id/mubsoneHomeHeader"
         android:textColor="@color/white"
         android:layout_below="@+id/imageView"
         android:layout_centerHorizontal="true"
         android:textSize="45sp"/>
 
+<!--
     <ImageView
         android:layout_width="253dp"
         android:layout_height="2dp"
@@ -157,6 +153,21 @@
         android:layout_above="@+id/text4"
         android:layout_centerHorizontal="true"
         android:contentDescription="Log_in_facebook" />
+-->
+
+<!--
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/sign_up"
+        android:id="@+id/signupHomeButton"
+        android:textColor="@color/white_log"
+        android:singleLine="false"
+        android:paddingLeft="100dp"
+        android:layout_below="@+id/linearLayout"
+        android:layout_centerHorizontal="true" />
+-->
 
 
 </RelativeLayout>
