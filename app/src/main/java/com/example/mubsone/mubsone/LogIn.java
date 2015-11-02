@@ -12,7 +12,7 @@ import android.widget.EditText;
 import java.util.HashMap;
 
 public class LogIn extends AppCompatActivity {
-    public static final String loginURL = "http://10.0.2.2:8000/accounts/login";
+    public static final String loginURL = "http://10.0.2.2:8000/accounts/login/";
     //declare all the TextViewer on the main page
 /*
     private TextView [] id_text= new TextView [4];
@@ -48,17 +48,17 @@ public class LogIn extends AppCompatActivity {
         String username = usernameEditText.getText().toString();
         String password = passwordEditText.getText().toString();
         Log.i("username", username);
-        sendGETLoginRequest(loginURL, username, password);
+        sendLoginRequest(loginURL, username, password);
 
         startActivity(intent);
     }
 
-    public void sendGETLoginRequest(String requestUrl, String username, String password)
+    public void sendLoginRequest(String requestUrl, String username, String password)
     {
         HashMap<String, String> map = new HashMap<String, String>();
         map.put("username", username);
         map.put("password", password);
-        HttpRequestParams params = new HttpRequestParams(loginURL, "POST", map);
+        HttpRequestParams params = new HttpRequestParams(requestUrl, "POST", map);
         Log.i("Username:", params.getParams().get("username"));
         Log.i("Password:", params.getParams().get("password"));
 

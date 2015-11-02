@@ -11,6 +11,9 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
+import java.net.CookieHandler;
+import java.net.CookieManager;
+import java.net.CookiePolicy;
 import java.net.CookieStore;
 import java.net.HttpCookie;
 import java.net.HttpURLConnection;
@@ -33,29 +36,25 @@ public class HttpPOSTRequestTask extends AsyncTask<HttpRequestParams, String, St
                 String response = "";
                 String requestUrl = params.getUrl();
 
+                CookieManager manager = new CookieManager();
+                manager.setCookiePolicy(CookiePolicy.ACCEPT_ALL);
+                CookieHandler.setDefault(manager);
+
                 URL getUrl = new URL(requestUrl);
                 HttpURLConnection getConn = (HttpURLConnection) getUrl.openConnection();
-                getConn.setUseCaches(false); // Don't use a Cached Copy
-                getConn.setRequestMethod("GET");
                 getConn.setRequestProperty("Connection", "Keep-Alive");
                 getConn.getContent();
-                getConn.disconnect();
 
-                java.net.CookieManager cManager = new java.net.CookieManager();
-
-
-                CookieStore cookieJar = cManager.getCookieStore();
+                CookieStore cookieJar = manager.getCookieStore();
                 List<HttpCookie> cookies = cookieJar.getCookies();
                 String csrf = null;
                 for (HttpCookie cookie : cookies) {
-                    Log.d("cookie", "" + cookie);
-                    if (cookie.getName() == "csrftoken") {
+                    if (cookie.getName().equals("csrftoken")) {
                         csrf = cookie.getValue();
                         break;
                     }
                 }
 
-                //Log.i("CSRF", csrf);
 
                 URL postUrl = new URL(requestUrl);
                 HttpURLConnection postConn = (HttpURLConnection) postUrl.openConnection();
@@ -64,9 +63,11 @@ public class HttpPOSTRequestTask extends AsyncTask<HttpRequestParams, String, St
                 postConn.setConnectTimeout(15000);
                 postConn.setDoInput(true);
                 postConn.setDoOutput(true);
+
+                params.getParams().put("csrfmiddlewaretoken", csrf);
                 OutputStream os = postConn.getOutputStream();
-                BufferedWriter writer = new BufferedWriter(
-                        new OutputStreamWriter(os, "UTF-8"));
+                BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
+
                 writer.write(getPostDataString(params.getParams()));
 
                 writer.flush();
@@ -81,9 +82,13 @@ public class HttpPOSTRequestTask extends AsyncTask<HttpRequestParams, String, St
                         response += line;
                     }
                 } else {
-                    response = "";
-
+                    String line;
+                    BufferedReader br = new BufferedReader(new InputStreamReader(postConn.getErrorStream()));
+                    while ((line = br.readLine()) != null) {
+                        response += line;
+                    }
                 }
+                Log.i("Response", response);
                 return response;
 
             } catch (Exception e) {
@@ -101,6 +106,7 @@ public class HttpPOSTRequestTask extends AsyncTask<HttpRequestParams, String, St
             else
                 result.append("&");
 
+            Log.i("key and value", entry.getKey() + " " + entry.getValue());
             result.append(URLEncoder.encode(entry.getKey(), "UTF-8"));
             result.append("=");
             result.append(URLEncoder.encode(entry.getValue(), "UTF-8"));
