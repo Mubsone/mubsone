@@ -47,7 +47,6 @@ public class LogIn extends AppCompatActivity {
 
         String username = usernameEditText.getText().toString();
         String password = passwordEditText.getText().toString();
-        Log.i("username", username);
         sendLoginRequest(loginURL, username, password);
 
         startActivity(intent);
@@ -59,8 +58,6 @@ public class LogIn extends AppCompatActivity {
         map.put("username", username);
         map.put("password", password);
         HttpRequestParams params = new HttpRequestParams(requestUrl, "POST", map);
-        Log.i("Username:", params.getParams().get("username"));
-        Log.i("Password:", params.getParams().get("password"));
 
         new HttpPOSTRequestTask().execute(params);
     }
