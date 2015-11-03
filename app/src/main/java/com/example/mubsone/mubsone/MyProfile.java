@@ -9,6 +9,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -20,12 +21,18 @@ import android.widget.Toast;
 
 import com.example.mubsone.mubsone.Blur.BlurActionBarDrawerToggle;
 
-public class MyProfile extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, AdapterView.OnItemClickListener {
+public class MyProfile extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
+        AdapterView.OnItemClickListener,
+        AsyncResponse {
+    private HttpGETRequestTask task = new HttpGETRequestTask();
     private TextView title_toolbar;
     private BlurActionBarDrawerToggle mDrawerToggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        task.delegate = this;
+        HttpRequestParams params = new HttpRequestParams("http://10.0.2.2:8000/accounts/profile/", "GET", null);
+        task.execute(params);
         //full screen aplication
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -58,12 +65,20 @@ public class MyProfile extends AppCompatActivity implements NavigationView.OnNav
         GridView myGrid = (GridView)findViewById(R.id.gridViewProfile);
         myGrid.setAdapter(new ProfileGridAdapter(this));
         myGrid.setOnItemClickListener(this);
+
+
     }
 
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long l){
         Toast.makeText(this, adapterView.getItemAtPosition(position).toString(), Toast.LENGTH_SHORT).show();
     }
 
+    public void processFinish(String result)
+    {
+        Log.i("Result", result);
+        TextView text = (TextView) findViewById(R.id.fansText);
+        text.setText(result);
+    }
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();

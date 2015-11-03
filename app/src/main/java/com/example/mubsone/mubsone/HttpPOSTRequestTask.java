@@ -29,6 +29,7 @@ import javax.net.ssl.HttpsURLConnection;
  * Created by mikel on 11/1/15.
  */
 public class HttpPOSTRequestTask extends AsyncTask<HttpRequestParams, String, String> {
+//    public AsyncResponse delegate = null;
 
     protected String doInBackground(HttpRequestParams... paramSet) {
         for (HttpRequestParams params : paramSet)
@@ -96,6 +97,12 @@ public class HttpPOSTRequestTask extends AsyncTask<HttpRequestParams, String, St
             }
         return null;
     }
+
+//    @Override
+//    protected void onPostExecute(String result)
+//    {
+//        delegate.processFinish(result);
+//    }
 
     private String getPostDataString(HashMap<String, String> params) throws UnsupportedEncodingException {
         StringBuilder result = new StringBuilder();
