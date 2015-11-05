@@ -4,18 +4,9 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.net.CookieHandler;
-import java.net.CookieManager;
-import java.net.CookiePolicy;
-import java.net.CookieStore;
-import java.net.HttpCookie;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.List;
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -23,7 +14,7 @@ import javax.net.ssl.HttpsURLConnection;
  * Created by mikel on 11/3/15.
  */
 public class HttpGETRequestTask extends AsyncTask<HttpRequestParams, Void, String>{
-    public AsyncResponse delegate = null;
+    public HttpAsyncResponse delegate = null;
 
     protected String doInBackground(HttpRequestParams... paramSet) {
         for (HttpRequestParams params : paramSet)
@@ -65,7 +56,7 @@ public class HttpGETRequestTask extends AsyncTask<HttpRequestParams, Void, Strin
 
     @Override
     protected void onPostExecute(String result) {
-        delegate.processFinish(result);
+        delegate.httpRequestProcessFinish(result);
     }
 
 }

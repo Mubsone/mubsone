@@ -3,10 +3,8 @@ package com.example.mubsone.mubsone;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
@@ -28,8 +26,8 @@ import javax.net.ssl.HttpsURLConnection;
 /**
  * Created by mikel on 11/1/15.
  */
-public class HttpPOSTRequestTask extends AsyncTask<HttpRequestParams, String, String> {
-//    public AsyncResponse delegate = null;
+public class HttpPOSTRequestTask extends AsyncTask<HttpRequestParams, Void, String> {
+    public HttpAsyncResponse delegate = null;
 
     protected String doInBackground(HttpRequestParams... paramSet) {
         for (HttpRequestParams params : paramSet)
@@ -98,11 +96,10 @@ public class HttpPOSTRequestTask extends AsyncTask<HttpRequestParams, String, St
         return null;
     }
 
-//    @Override
-//    protected void onPostExecute(String result)
-//    {
-//        delegate.processFinish(result);
-//    }
+    @Override
+    protected void onPostExecute(String result) {
+        delegate.httpRequestProcessFinish(result);
+    }
 
     private String getPostDataString(HashMap<String, String> params) throws UnsupportedEncodingException {
         StringBuilder result = new StringBuilder();

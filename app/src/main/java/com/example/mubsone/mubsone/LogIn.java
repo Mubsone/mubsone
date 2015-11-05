@@ -3,7 +3,6 @@ package com.example.mubsone.mubsone;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -11,8 +10,7 @@ import android.widget.EditText;
 
 import java.util.HashMap;
 
-public class LogIn extends AppCompatActivity {
-    public static final String loginURL = "http://10.0.2.2:8000/accounts/login/";
+public class LogIn extends AppCompatActivity implements HttpAsyncResponse {
     //declare all the TextViewer on the main page
 /*
     private TextView [] id_text= new TextView [4];
@@ -47,19 +45,25 @@ public class LogIn extends AppCompatActivity {
 
         String username = usernameEditText.getText().toString();
         String password = passwordEditText.getText().toString();
-        sendLoginRequest(loginURL, username, password);
+        sendLoginRequest(username, password);
 
         startActivity(intent);
     }
 
-    public void sendLoginRequest(String requestUrl, String username, String password)
+    public void sendLoginRequest(String username, String password)
     {
-        HashMap<String, String> map = new HashMap<String, String>();
-        map.put("username", username);
-        map.put("password", password);
-        HttpRequestParams params = new HttpRequestParams(requestUrl, "POST", map);
+        HashMap<String, String> paramsMap = new HashMap<String, String>();
+        paramsMap.put("username", username);
+        paramsMap.put("password", password);
+        HttpRequestParams params = new HttpRequestParams("/accounts/login/", "POST", paramsMap);
 
-        new HttpPOSTRequestTask().execute(params);
+        HttpRequestTask request = new HttpRequestTask(params, this);
+        request.execute();
+    }
+
+    public void httpRequestProcessFinish(String result)
+    {
+        return;
     }
 
     //assign all the edit text for the sing in

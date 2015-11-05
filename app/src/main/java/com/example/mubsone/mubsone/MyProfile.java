@@ -1,4 +1,5 @@
 package com.example.mubsone.mubsone;
+import org.json.*;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -23,16 +24,15 @@ import com.example.mubsone.mubsone.Blur.BlurActionBarDrawerToggle;
 
 public class MyProfile extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
         AdapterView.OnItemClickListener,
-        AsyncResponse {
-    private HttpGETRequestTask task = new HttpGETRequestTask();
+        HttpAsyncResponse {
     private TextView title_toolbar;
     private BlurActionBarDrawerToggle mDrawerToggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        task.delegate = this;
-        HttpRequestParams params = new HttpRequestParams("http://10.0.2.2:8000/accounts/profile/", "GET", null);
-        task.execute(params);
+        HttpRequestParams params = new HttpRequestParams("/accounts/profile/", "GET", null);
+        HttpRequestTask request = new HttpRequestTask(params, this);
+        request.execute();
         //full screen aplication
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -73,12 +73,43 @@ public class MyProfile extends AppCompatActivity implements NavigationView.OnNav
         Toast.makeText(this, adapterView.getItemAtPosition(position).toString(), Toast.LENGTH_SHORT).show();
     }
 
-    public void processFinish(String result)
+    public void httpRequestProcessFinish(String result)
     {
-        Log.i("Result", result);
-        TextView text = (TextView) findViewById(R.id.fansText);
-        text.setText(result);
+        Log.i("Res", result);
+        String fansNumber   = null;
+        String username     = null;
+        String rating       = null;
+        String videos       = null;
+        String contests     = null;
+
+        try
+        {
+            JSONObject jsonResponse = new JSONObject(result);
+
+            fansNumber  = jsonResponse.getString("fans");
+            username    = jsonResponse.getString("username");
+            rating      = jsonResponse.getString("rating");
+            videos      = jsonResponse.getString("videos");
+            contests    = jsonResponse.getString("contests");
+        }
+        catch(JSONException e)
+        {
+            e.printStackTrace();
+        }
+
+        TextView fansText       = (TextView) findViewById(R.id.fansText);
+        TextView usernameText   = (TextView) findViewById(R.id.usernameTextProfile);
+        TextView ratingsText    = (TextView) findViewById(R.id.ratesTextProfile);
+        TextView videosText     = (TextView) findViewById(R.id.numberOfVideosText);
+        TextView contestsText   = (TextView) findViewById(R.id.contestsWonText);
+
+        fansText.setText(fansNumber);
+        usernameText.setText(username);
+        ratingsText.setText(rating);
+        videosText.setText(videos);
+        contestsText.setText(contests);
     }
+
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
