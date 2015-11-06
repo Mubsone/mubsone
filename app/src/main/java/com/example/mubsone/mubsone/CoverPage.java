@@ -67,14 +67,9 @@ public class CoverPage extends ListActivity implements NavigationView.OnNavigati
 
     }
 
-    public void logoutHomeButtonCallback(View view){
-        Intent intent = new Intent(this, LogIn.class);
-        logOut();
-        startActivity(intent);
-    }
     public void logOut()
     {
-        HttpRequestParams params = new HttpRequestParams("/accounts/logout/", "POST", null);
+        HttpRequestParams params = new HttpRequestParams("/accounts/logout/", "GET", null);
 
         HttpRequestTask request = new HttpRequestTask(params, this);
         request.execute();
@@ -145,6 +140,7 @@ public class CoverPage extends ListActivity implements NavigationView.OnNavigati
             startActivity(next_layout);
 
         } else if (id == R.id.nav_logout) {
+            logOut();
             Intent next_layout = new Intent(getApplicationContext(), LogIn.class);
             onPause();
             startActivity(next_layout);
