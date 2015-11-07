@@ -23,7 +23,7 @@ import javax.net.ssl.HttpsURLConnection;
  */
 //The user interface like in the database made
 
-public class User implements HttpAsyncResponse{
+public class User {
 
     private long Id_User;
     private String Firstname;
@@ -141,24 +141,4 @@ public class User implements HttpAsyncResponse{
         this.isPremium = isPremium;
     }
 
-    public void logIn (String username, String password){
-        HashMap<String, String> paramsMap = new HashMap<String, String>();
-        paramsMap.put("username", username);
-        paramsMap.put("password", password);
-        HttpRequestParams params = new HttpRequestParams("/accounts/login/", "POST", paramsMap);
-
-        HttpRequestTask request = new HttpRequestTask(params, this);
-        request.execute();
-    }
-    public void httpRequestProcessFinish(String result)
-    {
-        return;
-    }
-
-    public void logOut (){
-        HttpRequestParams params = new HttpRequestParams("/accounts/logout/", "POST", null);
-
-        HttpRequestTask request = new HttpRequestTask(params, this);
-        request.execute();
-    }
 }

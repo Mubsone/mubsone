@@ -16,9 +16,9 @@ public class LogIn extends AppCompatActivity implements HttpAsyncResponse {
     private TextView [] id_text= new TextView [4];
     private EditText [] id_edit=new EditText [5];
     private String [] String_id_edit=new String [id_edit.length];
-    private Button logIn;*/
-    private User u;
-
+    private Button logIn;
+    private User newUser;
+*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //full screen aplication
@@ -39,16 +39,26 @@ public class LogIn extends AppCompatActivity implements HttpAsyncResponse {
     public void loginHomeButtonCallback(View view)
     {
         Intent intent = new Intent(this, CoverPage.class);
-        u=new User();
 
         EditText usernameEditText = (EditText) findViewById(R.id.usernameLoginPageEditText);
         EditText passwordEditText = (EditText) findViewById(R.id.passwordLoginPageEditText);
 
         String username = usernameEditText.getText().toString();
         String password = passwordEditText.getText().toString();
-        u.logIn(username, password);
+        logIn(username, password);
 
         startActivity(intent);
+    }
+
+    public void logIn(String username, String password)
+    {
+        HashMap<String, String> paramsMap = new HashMap<String, String>();
+        paramsMap.put("username", username);
+        paramsMap.put("password", password);
+        HttpRequestParams params = new HttpRequestParams("/accounts/login/", "POST", paramsMap);
+
+        HttpRequestTask request = new HttpRequestTask(params, this);
+        request.execute();
     }
 
     public void httpRequestProcessFinish(String result)
@@ -178,7 +188,7 @@ public class LogIn extends AppCompatActivity implements HttpAsyncResponse {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-                Intent next_layout = new Intent(getApplicationContext(), CoverPage.class);
+                Intent next_layout = new Intent(getApplicationContext(), Newsfeed.class);
 
                 onPause();
 
@@ -192,7 +202,7 @@ public class LogIn extends AppCompatActivity implements HttpAsyncResponse {
                 @Override
                 public void onClick(View v) {
                     //start a new layout for you
-                    Intent next_layout = new Intent(getApplicationContext(), CoverPage.class);
+                    Intent next_layout = new Intent(getApplicationContext(), Newsfeed.class);
                     onPause();
                     startActivity(next_layout);
                 }

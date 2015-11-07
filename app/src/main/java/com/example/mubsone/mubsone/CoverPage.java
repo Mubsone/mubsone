@@ -19,7 +19,9 @@ import android.widget.TextView;
 
 import com.example.mubsone.mubsone.Blur.BlurActionBarDrawerToggle;
 
-public class CoverPage extends ListActivity implements NavigationView.OnNavigationItemSelectedListener,HttpAsyncResponse {
+import java.util.HashMap;
+
+public class CoverPage extends ListActivity implements NavigationView.OnNavigationItemSelectedListener,HttpAsyncResponse{
     private TextView title_toolbar;
     private BlurActionBarDrawerToggle mDrawerToggle;
     private User u;
@@ -67,15 +69,22 @@ public class CoverPage extends ListActivity implements NavigationView.OnNavigati
 
     public void logoutHomeButtonCallback(View view){
         Intent intent = new Intent(this, LogIn.class);
-        u=new User();
-        u.logOut();
+        logOut();
         startActivity(intent);
+    }
+    public void logOut()
+    {
+        HttpRequestParams params = new HttpRequestParams("/accounts/logout/", "POST", null);
+
+        HttpRequestTask request = new HttpRequestTask(params, this);
+        request.execute();
     }
 
     public void httpRequestProcessFinish(String result)
     {
         return;
     }
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_newsfeed);
