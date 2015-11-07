@@ -4,23 +4,15 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
@@ -116,12 +108,12 @@ public class Search extends AppCompatActivity implements NavigationView.OnNaviga
             startActivity(next_layout);
 
         } else if (id == R.id.nav_newsfeed) {
-            Intent next_layout = new Intent(getApplicationContext(), Newsfeed.class);
+            Intent next_layout = new Intent(getApplicationContext(), CoverPage.class);
             onPause();
             startActivity(next_layout);
 
         } else if (id == R.id.nav_myprofil) {
-            Intent next_layout = new Intent(getApplicationContext(), MyProfile.class);
+            Intent next_layout = new Intent(getApplicationContext(), Profile.class);
             onPause();
             startActivity(next_layout);
         } else if (id == R.id.nav_notification) {

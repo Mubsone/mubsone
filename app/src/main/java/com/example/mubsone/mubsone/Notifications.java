@@ -77,12 +77,12 @@ public class Notifications extends ListActivity implements NavigationView.OnNavi
             onPause();
             startActivity(next_layout);
         } else if (id == R.id.nav_newsfeed) {
-            Intent next_layout = new Intent(getApplicationContext(), Newsfeed.class);
+            Intent next_layout = new Intent(getApplicationContext(), CoverPage.class);
             onPause();
             startActivity(next_layout);
 
         } else if (id == R.id.nav_myprofil) {
-            Intent next_layout = new Intent(getApplicationContext(), MyProfile.class);
+            Intent next_layout = new Intent(getApplicationContext(), Profile.class);
             onPause();
             startActivity(next_layout);
         } else if (id == R.id.nav_notification) {

@@ -29,7 +29,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Newsfeed"
+            android:name=".CoverPage"
             android:label="mubsone"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
@@ -39,16 +39,16 @@
             android:theme="@style/AppTheme.NoActionBar" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Newsfeed" />
+                android:value=".CoverPage" />
         </activity>
         <activity
-            android:name=".MyProfile"
+            android:name=".Profile"
             android:label="mubsone"
-            android:parentActivityName=".Newsfeed"
+            android:parentActivityName=".CoverPage"
             android:theme="@style/AppTheme.NoActionBar" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Newsfeed" />
+                android:value=".CoverPage" />
         </activity>
         <activity
             android:name=".Search"
@@ -56,7 +56,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Newsfeed" />
+                android:value=".CoverPage" />
         </activity>
         <activity
             android:name=".Marketplace"
@@ -64,7 +64,7 @@
             android:theme="@style/AppTheme" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Newsfeed" />
+                android:value=".CoverPage" />
         </activity>
     </application>
 

@@ -10,7 +10,7 @@
     app:openDescription="@string/navigation_drawer_open"
     app:closeDescription="@string/navigation_drawer_close">
 
-    <include layout="@layout/toolbar_of_newsfeed" android:layout_width="match_parent"
+    <include layout="@layout/toolbar_of_coverpage" android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
     <android.support.design.widget.NavigationView
@@ -18,7 +18,7 @@
         android:layout_height="match_parent"
         android:layout_marginTop="142dp"
         android:layout_marginBottom="115dp"
-        android:id="@+id/nav_view_newsfeed"
+        android:id="@+id/nav_view_coverpage"
         android:background="@drawable/side_nav_under"
         android:layout_gravity="start"
         android:fitsSystemWindows="false"

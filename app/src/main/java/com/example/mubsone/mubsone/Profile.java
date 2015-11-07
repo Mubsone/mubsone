@@ -22,7 +22,7 @@ import android.widget.Toast;
 
 import com.example.mubsone.mubsone.Blur.BlurActionBarDrawerToggle;
 
-public class MyProfile extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
+public class Profile extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
         AdapterView.OnItemClickListener,
         HttpAsyncResponse {
     private TextView title_toolbar;
@@ -37,7 +37,7 @@ public class MyProfile extends AppCompatActivity implements NavigationView.OnNav
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_profile);
+        setContentView(R.layout.activity_profile);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarOfProfile);
 
         toolbar.setVisibility(View.VISIBLE);
@@ -119,12 +119,12 @@ public class MyProfile extends AppCompatActivity implements NavigationView.OnNav
             onPause();
             startActivity(next_layout);
         } else if (id == R.id.nav_newsfeed) {
-            Intent next_layout = new Intent(getApplicationContext(), Newsfeed.class);
+            Intent next_layout = new Intent(getApplicationContext(), CoverPage.class);
             onPause();
             startActivity(next_layout);
 
         } else if (id == R.id.nav_myprofil) {
-            Intent next_layout = new Intent(getApplicationContext(), MyProfile.class);
+            Intent next_layout = new Intent(getApplicationContext(), Profile.class);
             onPause();
             startActivity(next_layout);
         } else if (id == R.id.nav_notification) {

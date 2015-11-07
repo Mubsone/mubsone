@@ -4,10 +4,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" android:fitsSystemWindows="true"
-    tools:context=".Notifications">
+    tools:context=".CoverPage">
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbarOfNewsfeed"
+        android:id="@+id/toolbarOfCoverpage"
         app:theme="@style/AppTheme.PopupOverlay"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
@@ -21,11 +21,11 @@
             android:textSize="25dp"
             android:textColor="@color/white"
             android:layout_gravity="center"
-            android:id="@+id/toolbarTitleNewsfeed"
+            android:id="@+id/toolbarTitleCoverpage"
             android:typeface="sans"
             android:textStyle="bold" />
     </android.support.v7.widget.Toolbar>
 
-    <include layout="@layout/content_notifications" />
+    <include layout="@layout/content_coverpage" />
 
 </android.support.design.widget.CoordinatorLayout>

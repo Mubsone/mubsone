@@ -7,7 +7,7 @@
     tools:targetApi="11">
 
     <VideoView
-        android:id="@+id/videoNewsfeed"
+        android:id="@+id/videoCoverpage"
         android:layout_width="350dp"
         android:layout_height="200dp"
         android:layout_marginTop="70dp"
@@ -16,25 +16,25 @@
         android:background="@drawable/audio_input_microphone"/>
 
     <ImageButton
-        android:id="@+id/profilePictureInNewsfeed"
+        android:id="@+id/profilePictureInCoverpage"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginTop="20dp"
         android:src="@mipmap/example_ic_user"
         android:layout_alignParentTop="true"
-        android:layout_alignLeft="@+id/videoNewsfeed"
-        android:layout_alignStart="@+id/videoNewsfeed"
+        android:layout_alignLeft="@+id/videoCoverpage"
+        android:layout_alignStart="@+id/videoCoverpage"
         android:background="@android:color/transparent"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="usernameNewsfeed"
+        android:text="usernameCoverpage"
         android:textColor="@color/black"
         android:textSize="20dp"
         android:id="@+id/username"
-        android:layout_alignBottom="@+id/profilePictureInNewsfeed"
-        android:layout_toRightOf="@+id/profilePictureInNewsfeed"
-        android:layout_toEndOf="@+id/profilePictureInNewsfeed"
+        android:layout_alignBottom="@+id/profilePictureInCoverpage"
+        android:layout_toRightOf="@+id/profilePictureInCoverpage"
+        android:layout_toEndOf="@+id/profilePictureInCoverpage"
         android:layout_marginLeft="14dp"
         android:layout_marginStart="14dp"
         android:layout_marginBottom="11dp"/>
@@ -45,63 +45,63 @@
         android:layout_width="30dp"
         android:layout_height="wrap_content"
         android:text="5"
-        android:id="@+id/numberOfRatesNewsfeed"
+        android:id="@+id/numberOfRatesCoverpage"
         android:textSize="20sp"
         android:layout_alignBottom="@+id/myRatingBar"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
     <ImageButton
-        android:id="@+id/iconDescriptionInNewsfeed"
+        android:id="@+id/iconDescriptionInCoverpage"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:src="@mipmap/ic_new_description"
         android:background="@android:color/transparent"
-        android:layout_below="@+id/videoNewsfeed"
-        android:layout_alignRight="@+id/profilePictureInNewsfeed"
-        android:layout_alignEnd="@+id/profilePictureInNewsfeed" />
+        android:layout_below="@+id/videoCoverpage"
+        android:layout_alignRight="@+id/profilePictureInCoverpage"
+        android:layout_alignEnd="@+id/profilePictureInCoverpage" />
     <TextView
-        android:id="@+id/songTitleInNewsfeed"
+        android:id="@+id/songTitleInCoverpage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Song Title"
         android:textSize="15sp"
         android:layout_marginTop="285dp"
-        android:layout_toRightOf="@+id/iconDescriptionInNewsfeed"
-        android:layout_toEndOf="@+id/iconDescriptionInNewsfeed" />
+        android:layout_toRightOf="@+id/iconDescriptionInCoverpage"
+        android:layout_toEndOf="@+id/iconDescriptionInCoverpage" />
 
     <ImageButton
-        android:id="@+id/iconCommentInNewsfeed"
+        android:id="@+id/iconCommentInCoverpage"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:src="@mipmap/ic_new_comment"
         android:background="@android:color/transparent"
-        android:layout_alignTop="@+id/iconViewInNewsfeed"
+        android:layout_alignTop="@+id/iconViewInCoverpage"
         android:layout_toLeftOf="@+id/iconShareInNewsfeed"
         android:layout_toStartOf="@+id/iconShareInNewsfeed" />
 
     <ImageButton
-        android:id="@+id/iconViewInNewsfeed"
+        android:id="@+id/iconViewInCoverpage"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:src="@mipmap/ic_new_viewer"
         android:background="@android:color/transparent"
-        android:layout_below="@+id/videoNewsfeed"
-        android:layout_toLeftOf="@+id/iconCommentInNewsfeed"
-        android:layout_toStartOf="@+id/iconCommentInNewsfeed" />
+        android:layout_below="@+id/videoCoverpage"
+        android:layout_toLeftOf="@+id/iconCommentInCoverpage"
+        android:layout_toStartOf="@+id/iconCommentInCoverpage" />
 
     <ImageButton
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:src="@mipmap/ic_new_share"
-        android:id="@+id/iconShareInNewsfeed"
+        android:id="@+id/iconShareInCoverpage"
         android:background="@android:color/transparent"
-        android:layout_alignTop="@+id/iconCommentInNewsfeed"
-        android:layout_alignRight="@+id/videoNewsfeed"
-        android:layout_alignEnd="@+id/videoNewsfeed" />
+        android:layout_alignTop="@+id/iconCommentInCoverpage"
+        android:layout_alignRight="@+id/videoCoverpage"
+        android:layout_alignEnd="@+id/videoCoverpage" />
 
     <RatingBar
-        android:id="@+id/myRatingBar"
+        android:id="@+id/ratingBarInCoverpage"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:numStars="5"
@@ -110,8 +110,8 @@
         android:isIndicator="false"
         style="@style/foodRatingBar"
         android:layout_alignBottom="@+id/username"
-        android:layout_toLeftOf="@+id/numberOfRatesNewsfeed"
-        android:layout_toStartOf="@+id/numberOfRatesNewsfeed"
+        android:layout_toLeftOf="@+id/numberOfRatesCoverpage"
+        android:layout_toStartOf="@+id/numberOfRatesCoverpage"
         android:layout_marginRight="5dp"
         android:layout_marginTop="2.5dp"/>
 
@@ -119,9 +119,10 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/playButtonInCoverpage"
         android:src="@mipmap/ic_new_play"
         android:layout_marginBottom="74dp"
-        android:layout_alignBottom="@+id/videoNewsfeed"
+        android:layout_alignBottom="@+id/videoCoverpage"
         android:layout_centerHorizontal="true" />
 
 

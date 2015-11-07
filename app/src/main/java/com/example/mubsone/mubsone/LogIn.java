@@ -38,7 +38,7 @@ public class LogIn extends AppCompatActivity implements HttpAsyncResponse {
 
     public void loginHomeButtonCallback(View view)
     {
-        Intent intent = new Intent(this, Newsfeed.class);
+        Intent intent = new Intent(this, CoverPage.class);
 
         EditText usernameEditText = (EditText) findViewById(R.id.usernameLoginPageEditText);
         EditText passwordEditText = (EditText) findViewById(R.id.passwordLoginPageEditText);
@@ -188,7 +188,7 @@ public class LogIn extends AppCompatActivity implements HttpAsyncResponse {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-                Intent next_layout = new Intent(getApplicationContext(), Newsfeed.class);
+                Intent next_layout = new Intent(getApplicationContext(), CoverPage.class);
 
                 onPause();
 
@@ -202,7 +202,7 @@ public class LogIn extends AppCompatActivity implements HttpAsyncResponse {
                 @Override
                 public void onClick(View v) {
                     //start a new layout for you
-                    Intent next_layout = new Intent(getApplicationContext(), Newsfeed.class);
+                    Intent next_layout = new Intent(getApplicationContext(), CoverPage.class);
                     onPause();
                     startActivity(next_layout);
                 }

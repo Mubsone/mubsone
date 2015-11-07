@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
@@ -30,7 +29,7 @@ public class Marketplace extends ListActivity implements NavigationView.OnNaviga
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_market_place);
+        setContentView(R.layout.activity_marketplace);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarOfMarketplace);
         toolbar.setVisibility(View.VISIBLE);
@@ -69,12 +68,12 @@ public class Marketplace extends ListActivity implements NavigationView.OnNaviga
             onPause();
             startActivity(next_layout);
         } else if (id == R.id.nav_newsfeed) {
-            Intent next_layout = new Intent(getApplicationContext(), Newsfeed.class);
+            Intent next_layout = new Intent(getApplicationContext(), CoverPage.class);
             onPause();
             startActivity(next_layout);
 
         } else if (id == R.id.nav_myprofil) {
-            Intent next_layout = new Intent(getApplicationContext(), MyProfile.class);
+            Intent next_layout = new Intent(getApplicationContext(), Profile.class);
             onPause();
             startActivity(next_layout);
         } else if (id == R.id.nav_notification) {

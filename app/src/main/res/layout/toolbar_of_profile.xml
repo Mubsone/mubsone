@@ -26,6 +26,6 @@
             android:textStyle="bold" />
     </android.support.v7.widget.Toolbar>
 
-    <include layout="@layout/content_my_profile" />
+    <include layout="@layout/content_profile" />
 
 </android.support.design.widget.CoordinatorLayout>

@@ -18,7 +18,7 @@ import android.widget.TextView;
 
 import com.example.mubsone.mubsone.Blur.BlurActionBarDrawerToggle;
 
-public class Newsfeed extends ListActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class CoverPage extends ListActivity implements NavigationView.OnNavigationItemSelectedListener {
     private TextView title_toolbar;
     private BlurActionBarDrawerToggle mDrawerToggle;
 
@@ -32,17 +32,17 @@ public class Newsfeed extends ListActivity implements NavigationView.OnNavigatio
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_newsfeed);
+        setContentView(R.layout.activity_coverpage);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarOfNewsfeed);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarOfCoverpage);
 
         toolbar.setVisibility(View.VISIBLE);
         //arsing the font for the title toolbar
-        title_toolbar=(TextView)toolbar.findViewById(R.id.toolbarTitleNewsfeed);
+        title_toolbar=(TextView)toolbar.findViewById(R.id.toolbarTitleCoverpage);
         Typeface MyCustomFont = Typeface.createFromAsset(getAssets(),"fonts/dear_joe.ttf");
         title_toolbar.setTypeface(MyCustomFont);
 
-        NewsfeedListAdapter nwsfListAdapter = new NewsfeedListAdapter(this, username, songTitle, rating, images);
+        CoverpageListAdapter nwsfListAdapter = new CoverpageListAdapter(this, username, songTitle, rating, images);
         setListAdapter(nwsfListAdapter);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_newsfeed);
@@ -57,7 +57,7 @@ public class Newsfeed extends ListActivity implements NavigationView.OnNavigatio
         mDrawerToggle.setRadius(25);
         mDrawerToggle.setDownScaleFactor(0.0f);
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_newsfeed);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_coverpage);
         navigationView.setNavigationItemSelectedListener(this);
 
 
@@ -109,12 +109,12 @@ public class Newsfeed extends ListActivity implements NavigationView.OnNavigatio
             onPause();
             startActivity(next_layout);
         } else if (id == R.id.nav_newsfeed) {
-            Intent next_layout = new Intent(getApplicationContext(), Newsfeed.class);
+            Intent next_layout = new Intent(getApplicationContext(), CoverPage.class);
             onPause();
             startActivity(next_layout);
 
         } else if (id == R.id.nav_myprofil) {
-            Intent next_layout = new Intent(getApplicationContext(), MyProfile.class);
+            Intent next_layout = new Intent(getApplicationContext(), Profile.class);
             onPause();
             startActivity(next_layout);
         } else if (id == R.id.nav_notification) {
