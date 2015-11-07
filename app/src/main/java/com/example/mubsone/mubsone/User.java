@@ -23,7 +23,7 @@ import javax.net.ssl.HttpsURLConnection;
  */
 //The user interface like in the database made
 
-public class User {
+public class User implements HttpAsyncResponse{
 
     private long Id_User;
     private String Firstname;
@@ -42,19 +42,7 @@ public class User {
     //??The user can be an artist right ??
 
 
-    public User(long id_User, String username, String password, String firstname, String last_name, String email, int rating, int fans, String biography, boolean isBanned, boolean isAdmin, boolean isPremium) {
-        Id_User = id_User;
-        Firstname = username;
-        Lastname = password;
-        Username = username;
-        Password = password;
-        Rating = rating;
-        Fans = fans;
-        Biography = biography;
-        this.isBanned = isBanned;
-        Email = email;
-        this.isAdmin = isAdmin;
-        this.isPremium = isPremium;
+    public User() {
     }
 
     public long getId_User() {
@@ -153,4 +141,24 @@ public class User {
         this.isPremium = isPremium;
     }
 
+    public void logIn (String username, String password){
+        HashMap<String, String> paramsMap = new HashMap<String, String>();
+        paramsMap.put("username", username);
+        paramsMap.put("password", password);
+        HttpRequestParams params = new HttpRequestParams("/accounts/login/", "POST", paramsMap);
+
+        HttpRequestTask request = new HttpRequestTask(params, this);
+        request.execute();
+    }
+    public void httpRequestProcessFinish(String result)
+    {
+        return;
+    }
+
+    public void logOut (){
+        HttpRequestParams params = new HttpRequestParams("/accounts/logout/", "POST", null);
+
+        HttpRequestTask request = new HttpRequestTask(params, this);
+        request.execute();
+    }
 }

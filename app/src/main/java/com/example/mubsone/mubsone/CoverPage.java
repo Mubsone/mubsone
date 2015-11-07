@@ -14,13 +14,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.mubsone.mubsone.Blur.BlurActionBarDrawerToggle;
 
-public class CoverPage extends ListActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class CoverPage extends ListActivity implements NavigationView.OnNavigationItemSelectedListener,HttpAsyncResponse {
     private TextView title_toolbar;
     private BlurActionBarDrawerToggle mDrawerToggle;
+    private User u;
 
     String [] username ={"jv21", "AndyMatrix", "brajansaraci", "mikelv92"};
     String [] songTitle ={"Grizzly Bear", "Hotline Bling", "I ran away", "Sex on fire"};
@@ -63,6 +65,17 @@ public class CoverPage extends ListActivity implements NavigationView.OnNavigati
 
     }
 
+    public void logoutHomeButtonCallback(View view){
+        Intent intent = new Intent(this, LogIn.class);
+        u=new User();
+        u.logOut();
+        startActivity(intent);
+    }
+
+    public void httpRequestProcessFinish(String result)
+    {
+        return;
+    }
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_newsfeed);

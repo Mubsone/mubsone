@@ -16,9 +16,9 @@ public class LogIn extends AppCompatActivity implements HttpAsyncResponse {
     private TextView [] id_text= new TextView [4];
     private EditText [] id_edit=new EditText [5];
     private String [] String_id_edit=new String [id_edit.length];
-    private Button logIn;
-    private User newUser;
-*/
+    private Button logIn;*/
+    private User u;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //full screen aplication
@@ -39,26 +39,16 @@ public class LogIn extends AppCompatActivity implements HttpAsyncResponse {
     public void loginHomeButtonCallback(View view)
     {
         Intent intent = new Intent(this, CoverPage.class);
+        u=new User();
 
         EditText usernameEditText = (EditText) findViewById(R.id.usernameLoginPageEditText);
         EditText passwordEditText = (EditText) findViewById(R.id.passwordLoginPageEditText);
 
         String username = usernameEditText.getText().toString();
         String password = passwordEditText.getText().toString();
-        sendLoginRequest(username, password);
+        u.logIn(username, password);
 
         startActivity(intent);
-    }
-
-    public void sendLoginRequest(String username, String password)
-    {
-        HashMap<String, String> paramsMap = new HashMap<String, String>();
-        paramsMap.put("username", username);
-        paramsMap.put("password", password);
-        HttpRequestParams params = new HttpRequestParams("/accounts/login/", "POST", paramsMap);
-
-        HttpRequestTask request = new HttpRequestTask(params, this);
-        request.execute();
     }
 
     public void httpRequestProcessFinish(String result)
