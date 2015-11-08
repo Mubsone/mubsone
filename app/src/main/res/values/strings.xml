@@ -106,10 +106,12 @@
     <string name="exaple_user">Setting</string>
     <string name="exaple_song">Setting</string>
 
-<!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string-array name="tabs">
         <item>Music</item>
+        <item>User</item>
         <item>Group Member</item>
     </string-array>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
