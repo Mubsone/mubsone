@@ -1,5 +1,4 @@
 package com.example.mubsone.mubsone;
-import org.json.*;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -10,43 +9,40 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
-import android.widget.GridView;
+import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.mubsone.mubsone.Blur.BlurActionBarDrawerToggle;
 
-public class Profile extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
-        AdapterView.OnItemClickListener,
-        HttpAsyncResponse {
+import java.util.HashMap;
+
+/**
+ * Created by bsaraci on 11/7/2015.
+ */
+public class Settings extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, HttpAsyncResponse {
     private TextView title_toolbar;
     private BlurActionBarDrawerToggle mDrawerToggle;
 
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
-        HttpRequestParams params = new HttpRequestParams("/accounts/profile/", "GET", null);
-        HttpRequestTask request = new HttpRequestTask(params, this);
-        request.execute();
         //full screen aplication
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarOfProfile);
+        setContentView(R.layout.activity_settings);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarOfSettings);
 
         toolbar.setVisibility(View.VISIBLE);
         //arsing the font for the title toolbar
-        title_toolbar=(TextView)toolbar.findViewById(R.id.toolbarTitleProfile);
+        title_toolbar=(TextView)toolbar.findViewById(R.id.toolbarTitleSettings);
         Typeface MyCustomFont = Typeface.createFromAsset(getAssets(),"fonts/dear_joe.ttf");
         title_toolbar.setTypeface(MyCustomFont);
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_profile);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_settings);
         drawer.setScrimColor(Color.TRANSPARENT);
 
         mDrawerToggle = new BlurActionBarDrawerToggle(
@@ -59,55 +55,65 @@ public class Profile extends AppCompatActivity implements NavigationView.OnNavig
         //mDrawerToggle.setRadius(25);
         //mDrawerToggle.setDownScaleFactor(0.0f);
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_profile);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_settings);
         navigationView.setNavigationItemSelectedListener(this);
+    }
 
-        GridView myGrid = (GridView)findViewById(R.id.gridViewProfile);
-        myGrid.setAdapter(new ProfileGridAdapter(this));
-        myGrid.setOnItemClickListener(this);
+    public void updateDataCallback (View view) {
+        EditText bioEditText = (EditText) findViewById(R.id.changeDescriptionText);
+        EditText firstNameEditText = (EditText) findViewById(R.id.changeFirstNameText);
+        EditText lastNameEditText = (EditText) findViewById(R.id.changeLastNameText);
+        EditText usernameEditText = (EditText) findViewById(R.id.changeUsernameText);
 
+        String bio = bioEditText.getText().toString();
+        String firstName = firstNameEditText.getText().toString();
+        String lastName = lastNameEditText.getText().toString();
+        String username = usernameEditText.getText().toString();
+
+        sendChangedData(bio, firstName, lastName, username);
+
+        bioEditText.setText(null);
+        firstNameEditText.setText(null);
+        lastNameEditText.setText(null);
+        usernameEditText.setText(null);
 
     }
 
-    public void onItemClick(AdapterView<?> adapterView, View view, int position, long l){
-        Toast.makeText(this, adapterView.getItemAtPosition(position).toString(), Toast.LENGTH_SHORT).show();
+    public void sendChangedData(String bio, String firstName, String lastName, String username) {
+
+        HashMap<String, String> paramsMap = new HashMap<String, String>();
+
+        if (bio != null) {
+            paramsMap.put("biography", bio);
+        } else {
+            paramsMap.put("biography", null);
+        }
+        if (firstName != null) {
+            paramsMap.put("first_name", firstName );
+        } else {
+            paramsMap.put("first_name", null );
+        }
+        if (lastName != null) {
+            paramsMap.put("last_name", lastName);
+        } else {
+            paramsMap.put("last_name", null);
+        }
+        if (username != null) {
+            paramsMap.put("username", username);
+        } else {
+            paramsMap.put("username", null);
+        }
+
+
+        HttpRequestParams params = new HttpRequestParams("/accounts/edit_profile/", "POST", paramsMap);
+
+        HttpRequestTask request = new HttpRequestTask(params, this);
+        request.execute();
     }
 
     public void httpRequestProcessFinish(String result)
     {
-        Log.i("Res", result);
-        String fansNumber   = null;
-        String username     = null;
-        String rating       = null;
-        String videos       = null;
-        String contests     = null;
-
-        try
-        {
-            JSONObject jsonResponse = new JSONObject(result);
-
-            fansNumber  = jsonResponse.getString("fans");
-            username    = jsonResponse.getString("username");
-            rating      = jsonResponse.getString("rating");
-            videos      = jsonResponse.getString("videos");
-            contests    = jsonResponse.getString("contests");
-        }
-        catch(JSONException e)
-        {
-            e.printStackTrace();
-        }
-
-        TextView fansText       = (TextView) findViewById(R.id.fansText);
-        TextView usernameText   = (TextView) findViewById(R.id.usernameTextProfile);
-        TextView ratingsText    = (TextView) findViewById(R.id.ratesTextProfile);
-        TextView videosText     = (TextView) findViewById(R.id.numberOfVideosText);
-        TextView contestsText   = (TextView) findViewById(R.id.contestsWonText);
-
-        fansText.setText(fansNumber);
-        usernameText.setText(username);
-        ratingsText.setText(rating);
-        videosText.setText(videos);
-        contestsText.setText(contests);
+        return;
     }
 
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -152,4 +158,6 @@ public class Profile extends AppCompatActivity implements NavigationView.OnNavig
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 }
+

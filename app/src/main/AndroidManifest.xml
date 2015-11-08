@@ -61,7 +61,15 @@
         <activity
             android:name=".Marketplace"
             android:label="@string/title_activity_market_place"
-            android:theme="@style/AppTheme" >
+            android:theme="@style/AppTheme.NoActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".CoverPage" />
+        </activity>
+        <activity
+            android:name=".Settings"
+            android:label="mubsone"
+            android:theme="@style/AppTheme.NoActionBar" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".CoverPage" />
