@@ -3,8 +3,12 @@ package com.example.mubsone.mubsone;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.DataOutputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
@@ -35,36 +39,23 @@ public class HttpPOSTRequestTask extends AsyncTask<HttpRequestParams, Void, Stri
                 String response = "";
                 String requestUrl = params.getUrl();
 
-                CookieManager manager = new CookieManager();
-                manager.setCookiePolicy(CookiePolicy.ACCEPT_ALL);
-                CookieHandler.setDefault(manager);
-
-                URL getUrl = new URL(requestUrl);
-                HttpURLConnection getConn = (HttpURLConnection) getUrl.openConnection();
-                getConn.setRequestProperty("Connection", "Keep-Alive");
-                getConn.getContent();
-
-                CookieStore cookieJar = manager.getCookieStore();
-                List<HttpCookie> cookies = cookieJar.getCookies();
-                String csrf = null;
-                for (HttpCookie cookie : cookies) {
-                    if (cookie.getName().equals("csrftoken")) {
-                        csrf = cookie.getValue();
-                        break;
+                URL postUrl = new URL(requestUrl);
+                HttpURLConnection postConn = (HttpURLConnection) postUrl.openConnection();
+                postConn.setRequestMethod("POST");
+                postConn.setRequestProperty("Content-Type", "application/json");
+                postConn.setRequestProperty("Accept", "application/json");
+                if (params.getJwtManager() != null) {
+                    if (params.getJwtManager()._hasToken()) {
+                        postConn.setRequestProperty("Authorization", "JWT " + params.getJwtManager().getToken());
                     }
                 }
 
-
-                URL postUrl = new URL(requestUrl);
-                HttpURLConnection postConn = (HttpURLConnection) postUrl.openConnection();
-                postConn.setRequestMethod(params.getMethod());
-                postConn.setReadTimeout(15000);
-                postConn.setConnectTimeout(15000);
-                postConn.setDoInput(true);
+//                postConn.setDoInput(true);
                 postConn.setDoOutput(true);
+//                postConn.connect();
 
-                params.getParams().put("csrfmiddlewaretoken", csrf);
                 OutputStream os = postConn.getOutputStream();
+
                 BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
 
                 writer.write(getPostDataString(params.getParams()));
@@ -72,8 +63,8 @@ public class HttpPOSTRequestTask extends AsyncTask<HttpRequestParams, Void, Stri
                 writer.flush();
                 writer.close();
                 os.close();
-                int responseCode = postConn.getResponseCode();
 
+                int responseCode = postConn.getResponseCode();
                 if (responseCode == HttpsURLConnection.HTTP_OK) {
                     String line;
                     BufferedReader br = new BufferedReader(new InputStreamReader(postConn.getInputStream()));
@@ -81,11 +72,7 @@ public class HttpPOSTRequestTask extends AsyncTask<HttpRequestParams, Void, Stri
                         response += line;
                     }
                 } else {
-                    String line;
-                    BufferedReader br = new BufferedReader(new InputStreamReader(postConn.getErrorStream()));
-                    while ((line = br.readLine()) != null) {
-                        response += line;
-                    }
+                    return ("Failed : HTTP error code : " + responseCode);
                 }
                 Log.i("Response", response);
                 return response;
@@ -102,20 +89,15 @@ public class HttpPOSTRequestTask extends AsyncTask<HttpRequestParams, Void, Stri
     }
 
     private String getPostDataString(HashMap<String, String> params) throws UnsupportedEncodingException {
-        StringBuilder result = new StringBuilder();
-        boolean first = true;
-        for(Map.Entry<String, String> entry : params.entrySet()){
-            if (first)
-                first = false;
-            else
-                result.append("&");
-
-            Log.i("key and value", entry.getKey() + " " + entry.getValue());
-            result.append(URLEncoder.encode(entry.getKey(), "UTF-8"));
-            result.append("=");
-            result.append(URLEncoder.encode(entry.getValue(), "UTF-8"));
+        JSONObject jsonObject = new JSONObject();
+        for (Map.Entry<String, String> entry : params.entrySet()) {
+            try {
+                jsonObject.put(entry.getKey(), entry.getValue());
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
-
-        return result.toString();
+        Log.i("JSON", jsonObject.toString());
+        return jsonObject.toString();
     }
 }

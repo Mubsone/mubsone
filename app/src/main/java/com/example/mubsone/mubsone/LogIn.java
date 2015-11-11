@@ -3,10 +3,14 @@ package com.example.mubsone.mubsone;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 
@@ -46,6 +50,8 @@ public class LogIn extends AppCompatActivity implements HttpAsyncResponse {
         String username = usernameEditText.getText().toString();
         String password = passwordEditText.getText().toString();
         logIn(username, password);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
         startActivity(intent);
     }
@@ -55,7 +61,7 @@ public class LogIn extends AppCompatActivity implements HttpAsyncResponse {
         HashMap<String, String> paramsMap = new HashMap<String, String>();
         paramsMap.put("username", username);
         paramsMap.put("password", password);
-        HttpRequestParams params = new HttpRequestParams("/accounts/login/", "POST", paramsMap);
+        HttpRequestParams params = new HttpRequestParams("/accounts/login/", "POST", paramsMap, null);
 
         HttpRequestTask request = new HttpRequestTask(params, this);
         request.execute();
@@ -63,7 +69,17 @@ public class LogIn extends AppCompatActivity implements HttpAsyncResponse {
 
     public void httpRequestProcessFinish(String result)
     {
-        return;
+        String jwt = null;
+        try {
+            JSONObject jsonResult = new JSONObject(result);
+            jwt = jsonResult.getString("token");
+        } catch (JSONException e)
+        {
+            e.printStackTrace();
+        }
+        JWTManager jwtManager = new JWTManager(getApplicationContext());
+        jwtManager.setToken(jwt);
+
     }
 
     //assign all the edit text for the sing in

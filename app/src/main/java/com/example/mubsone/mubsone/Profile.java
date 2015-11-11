@@ -30,7 +30,8 @@ public class Profile extends AppCompatActivity implements NavigationView.OnNavig
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        HttpRequestParams params = new HttpRequestParams("/accounts/profile/", "GET", null);
+        JWTManager jwtManager = new JWTManager(getApplicationContext());
+        HttpRequestParams params = new HttpRequestParams("/accounts/profile/", "GET", null, jwtManager);
         HttpRequestTask request = new HttpRequestTask(params, this);
         request.execute();
         //full screen aplication

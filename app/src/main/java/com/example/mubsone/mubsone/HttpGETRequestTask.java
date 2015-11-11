@@ -25,10 +25,14 @@ public class HttpGETRequestTask extends AsyncTask<HttpRequestParams, Void, Strin
                 URL getUrl = new URL(requestUrl);
                 HttpURLConnection getConn = (HttpURLConnection) getUrl.openConnection();
                 getConn.setRequestMethod("GET");
-                getConn.setReadTimeout(15000);
-                getConn.setConnectTimeout(15000);
+                getConn.setRequestProperty("Accept", "application/json");
+                if (params.getJwtManager() != null) {
+                    if (params.getJwtManager()._hasToken()) {
+                        Log.i("Bearer", params.getJwtManager().getToken());
+                        getConn.setRequestProperty("Authorization", "JWT " + params.getJwtManager().getToken());
+                    }
+                }
                 getConn.setDoInput(true);
-//                getConn.setDoOutput(true);
 
                 int responseCode = getConn.getResponseCode();
 

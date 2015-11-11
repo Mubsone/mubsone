@@ -1,5 +1,7 @@
 package com.example.mubsone.mubsone;
 
+import android.util.Log;
+
 /**
  * Created by mikel on 11/5/15.
  */
@@ -26,6 +28,7 @@ public class HttpRequestTask {
         }
         else if (params.getMethod().equals("POST"))
         {
+            Log.i("POST", "Doing login");
             HttpPOSTRequestTask postRequestTask = new HttpPOSTRequestTask();
             postRequestTask.delegate = response;
             postRequestTask.execute(params);

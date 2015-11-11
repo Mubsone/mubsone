@@ -9,12 +9,14 @@ public class HttpRequestParams {
     private String url;
     private HashMap<String, String> params;
     private String method;
+    private JWTManager jwtManager;
 
-    HttpRequestParams(String url, String method, HashMap<String, String> params)
+    HttpRequestParams(String url, String method, HashMap<String, String> params, JWTManager jwtManager)
     {
         this.method = method;
         this.url = url;
         this.params = params;
+        this.jwtManager = jwtManager;
     }
 
     public String getUrl() {
@@ -40,5 +42,9 @@ public class HttpRequestParams {
     public void setUrl(String url) {
         this.url = url;
 
+    }
+
+    public JWTManager getJwtManager() {
+        return jwtManager;
     }
 }
