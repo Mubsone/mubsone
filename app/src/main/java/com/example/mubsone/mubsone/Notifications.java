@@ -99,11 +99,6 @@ public class Notifications extends ListActivity implements NavigationView.OnNavi
             Intent next_layout = new Intent(getApplicationContext(), Marketplace.class);
             onPause();
             startActivity(next_layout);
-
-        } else if (id == R.id.nav_settings) {
-            Intent next_layout = new Intent(getApplicationContext(), Settings.class);
-            onPause();
-            startActivity(next_layout);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_notifications);
