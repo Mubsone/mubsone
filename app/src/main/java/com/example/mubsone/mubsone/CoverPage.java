@@ -150,6 +150,12 @@ public class CoverPage extends ListActivity implements NavigationView.OnNavigati
             onPause();
             startActivity(next_layout);
         }
+        else if (id == R.id.nav_settings) {
+            Intent next_layout = new Intent(getApplicationContext(), Settings.class);
+            onPause();
+            startActivity(next_layout);
+        }
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_newsfeed);
         drawer.closeDrawer(GravityCompat.START);

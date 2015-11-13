@@ -28,7 +28,6 @@ public class HttpRequestTask {
         }
         else if (params.getMethod().equals("POST"))
         {
-            Log.i("POST", "Doing login");
             HttpPOSTRequestTask postRequestTask = new HttpPOSTRequestTask();
             postRequestTask.delegate = response;
             postRequestTask.execute(params);

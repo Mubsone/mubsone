@@ -82,6 +82,7 @@ public class Profile extends AppCompatActivity implements NavigationView.OnNavig
         String rating       = null;
         String videos       = null;
         String contests     = null;
+        String name         = null;
 
         try
         {
@@ -92,6 +93,7 @@ public class Profile extends AppCompatActivity implements NavigationView.OnNavig
             rating      = jsonResponse.getString("rating");
             videos      = jsonResponse.getString("videos");
             contests    = jsonResponse.getString("contests");
+            name        = jsonResponse.getString("first_name") + jsonResponse.getString("last_name");
         }
         catch(JSONException e)
         {
@@ -103,12 +105,14 @@ public class Profile extends AppCompatActivity implements NavigationView.OnNavig
         TextView ratingsText    = (TextView) findViewById(R.id.ratesTextProfile);
         TextView videosText     = (TextView) findViewById(R.id.numberOfVideosText);
         TextView contestsText   = (TextView) findViewById(R.id.contestsWonText);
+        TextView bio            = (TextView) findViewById(R.id.descriptionProfile);
 
         fansText.setText(fansNumber);
         usernameText.setText(username);
         ratingsText.setText(rating);
         videosText.setText(videos);
         contestsText.setText(contests);
+        bio.setText(name);
     }
 
     public boolean onNavigationItemSelected(MenuItem item) {
