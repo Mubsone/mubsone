@@ -6,7 +6,7 @@ import android.util.Log;
  * Created by mikel on 11/5/15.
  */
 public class HttpRequestTask {
-    public static final String SERVER_ADDRESS = "http://82.77.167.81:10246";
+    public static final String SERVER_ADDRESS = "http://89.120.209.153:10246";
     private HttpAsyncResponse response;
     private HttpRequestParams params;
 

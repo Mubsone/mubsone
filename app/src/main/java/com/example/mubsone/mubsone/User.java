@@ -19,7 +19,7 @@ import java.util.Map;
 import javax.net.ssl.HttpsURLConnection;
 
 /**
- * Created by andyekko on 24/08/15.
+ * Created by andy on 24/08/15.
  */
 //The user interface like in the database made
 
