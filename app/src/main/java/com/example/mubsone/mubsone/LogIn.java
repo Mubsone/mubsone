@@ -1,6 +1,7 @@
 package com.example.mubsone.mubsone;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -15,28 +17,15 @@ import org.json.JSONObject;
 import java.util.HashMap;
 
 public class LogIn extends AppCompatActivity implements HttpAsyncResponse {
-    //declare all the TextViewer on the main page
-/*
-    private TextView [] id_text= new TextView [4];
-    private EditText [] id_edit=new EditText [5];
-    private String [] String_id_edit=new String [id_edit.length];
-    private Button logIn;
-    private User newUser;
-*/
+    private TextView[] id_text= new TextView [4];
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //full screen aplication
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        //main for the layout
         super.onCreate(savedInstanceState);
         setContentView(R.layout.start_app);
-
-/*
         change_fonts();
-        press_the_button(false);  //error here //next time i need to solve
-        check_interface();
-*/
 
     }
 
@@ -62,7 +51,6 @@ public class LogIn extends AppCompatActivity implements HttpAsyncResponse {
         paramsMap.put("username", username);
         paramsMap.put("password", password);
         HttpRequestParams params = new HttpRequestParams("/accounts/login/", "POST", paramsMap, null);
-
         HttpRequestTask request = new HttpRequestTask(params, this);
         request.execute();
     }
@@ -82,7 +70,31 @@ public class LogIn extends AppCompatActivity implements HttpAsyncResponse {
 
     }
 
-    //assign all the edit text for the sing in
+    public void change_fonts(){
+        id_text [0] = (TextView) findViewById(R.id.mubsoneHomeHeader);
+        id_text [1] = (TextView) findViewById(R.id.loginTextView);
+        id_text [2] = (TextView) findViewById(R.id.singupTextView);
+        id_text [3] = (TextView) findViewById(R.id.facebookTextView);
+        Typeface MyCustomFont = Typeface.createFromAsset(getAssets(), "fonts/dear_joe.ttf");
+        for (int i=0; i<id_text.length; i++) {
+            id_text[i].setTypeface(MyCustomFont);
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   //the_rest_of_the_program_in_comments
 /*
     public void sing_in_now(boolean x) {
         //?! assign easy
@@ -134,17 +146,6 @@ public class LogIn extends AppCompatActivity implements HttpAsyncResponse {
         return x;
     }
     //optimize the setting here.
-    public void change_fonts(){
-        id_text [0] = (TextView) findViewById(R.id.mubsoneHomeHeader);
-        id_text [1] = (TextView) findViewById(R.id.loginHomeTextView);
-        id_text [2] = (TextView) findViewById(R.id.signupHomeButton);
-        id_text [3] = (TextView) findViewById(R.id.text4);
-        Typeface MyCustomFont = Typeface.createFromAsset(getAssets(),"fonts/dear_joe.ttf");
-        for (int i=0; i<id_text.length; i++) {
-            id_text[i].setTypeface(MyCustomFont);
-        }
-        logIn= (Button)findViewById(R.id.loginHomeButton);
-    }
     //optimize  later :-//
     public void press_the_button(boolean x) {
         if (x) {
