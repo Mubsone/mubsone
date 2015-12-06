@@ -14,17 +14,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.mubsone.mubsone.Blur.BlurActionBarDrawerToggle;
-
-import java.util.HashMap;
 
 public class CoverPage extends ListActivity implements NavigationView.OnNavigationItemSelectedListener,HttpAsyncResponse{
     private TextView title_toolbar;
     private BlurActionBarDrawerToggle mDrawerToggle;
     private User u;
+    private TextView[] id_text= new TextView [2];
 
     String [] username ={"jv21", "AndyMatrix", "brajansaraci", "mikelv92"};
     String [] songTitle ={"Grizzly Bear", "Hotline Bling", "I ran away", "Sex on fire"};
@@ -39,7 +37,6 @@ public class CoverPage extends ListActivity implements NavigationView.OnNavigati
         setContentView(R.layout.activity_coverpage);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarOfCoverpage);
-
         toolbar.setVisibility(View.VISIBLE);
         //arsing the font for the title toolbar
         title_toolbar=(TextView)toolbar.findViewById(R.id.toolbarTitleCoverpage);
@@ -85,7 +82,6 @@ public class CoverPage extends ListActivity implements NavigationView.OnNavigati
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_newsfeed);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-
         } else {
             super.onBackPressed();
         }
@@ -161,5 +157,7 @@ public class CoverPage extends ListActivity implements NavigationView.OnNavigati
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
 
 }

@@ -85,10 +85,10 @@
         android:layout_alignParentEnd="true" />
 
     <ImageView
-        android:layout_width="55px"
-        android:layout_height="55px"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:id="@+id/averageRatesIcon"
-        android:src="@mipmap/ic_star"
+        android:src="@mipmap/ic_start_full"
         android:layout_alignBottom="@+id/fansIcon"
         android:layout_toRightOf="@+id/fansText"
         android:layout_toEndOf="@+id/fansText"
@@ -142,7 +142,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="brajansaraci"
+        android:text="Brajansaraci"
         android:id="@+id/usernameTextProfile"
         android:textColor="@color/black"
         android:layout_alignTop="@+id/becomeAFan"
@@ -161,13 +161,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="19, Lyon
- Love to make music covers"
+        android:text="19, Lyon Love to make music covers"
         android:id="@+id/descriptionProfile"
         android:textColor="@color/black"
         android:singleLine="false"
         android:maxWidth="150dp"
-        android:textSize="11sp"
+        android:textSize="11dp"
         android:layout_alignTop="@+id/separatorProfile"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="3dp"/>
