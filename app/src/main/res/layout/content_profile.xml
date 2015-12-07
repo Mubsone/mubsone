@@ -154,7 +154,7 @@
 
 
     <Button
-        android:id="@+id/be_a_fan"
+        android:id="@+id/btn_be_a_fan"
         android:text="@string/become_a_fan"
         android:textColor="#FFFFFF"
         android:textSize="22sp"

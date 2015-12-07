@@ -27,6 +27,7 @@ public class Profile extends AppCompatActivity implements NavigationView.OnNavig
         HttpAsyncResponse {
     private TextView title_toolbar;
     private BlurActionBarDrawerToggle mDrawerToggle;
+    private TextView fansText, usernameText, ratingsText,videosText, contestsText, bio ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,20 +101,23 @@ public class Profile extends AppCompatActivity implements NavigationView.OnNavig
             e.printStackTrace();
         }
 
-        TextView fansText       = (TextView) findViewById(R.id.fansText);
-        TextView usernameText   = (TextView) findViewById(R.id.usernameTextProfile);
-        TextView ratingsText    = (TextView) findViewById(R.id.ratesTextProfile);
-        TextView videosText     = (TextView) findViewById(R.id.numberOfVideosText);
-        TextView contestsText   = (TextView) findViewById(R.id.contestsWonText);
-        TextView bio            = (TextView) findViewById(R.id.descriptionProfile);
+        fansText       = (TextView) findViewById(R.id.fansText);
+        usernameText   = (TextView) findViewById(R.id.usernameTextProfile);
+        ratingsText    = (TextView) findViewById(R.id.ratesTextProfile);
+        videosText     = (TextView) findViewById(R.id.numberOfVideosText);
+        contestsText   = (TextView) findViewById(R.id.contestsWonText);
+        bio            = (TextView) findViewById(R.id.descriptionProfile);
 
-        fansText.setText(fansNumber);
+        fansText.setText("Andy");
         usernameText.setText(username);
         ratingsText.setText(rating);
         videosText.setText(videos);
         contestsText.setText(contests);
         bio.setText(name);
 
+
+        //change the font for the page
+        change_fonts();
     }
 
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -152,5 +156,14 @@ public class Profile extends AppCompatActivity implements NavigationView.OnNavig
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_profile);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void change_fonts() {
+        Typeface MyCustomFont = Typeface.createFromAsset(getAssets(), "fonts/dear_joe.ttf");
+        fansText.setTypeface(MyCustomFont);
+        usernameText.setTypeface(MyCustomFont);
+        ratingsText.setTypeface(MyCustomFont);
+        videosText.setTypeface(MyCustomFont);
+        contestsText.setTypeface(MyCustomFont);
     }
 }
