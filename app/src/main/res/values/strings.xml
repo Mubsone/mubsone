@@ -114,4 +114,7 @@
 
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="become_a_fan">Become a fan</string>
+    <string name="you_are_a_fan">You are a fan</string>
 </resources>

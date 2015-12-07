@@ -14,7 +14,6 @@
 
 
     <GridView
-
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="180dp"
@@ -32,133 +31,153 @@
         android:layout_alignParentStart="true"
         android:background="@android:color/darker_gray"/>
 
-    <ImageView
-        android:layout_width="150px"
-        android:layout_height="150px"
-        android:id="@+id/numberOfVideosIcon"
-        android:src="@mipmap/ic_number_of_videos"
-        android:layout_alignBottom="@+id/numberOfVideosText"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="18dp"
-        android:layout_marginStart="18dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
+    <TableLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="69"
-        android:id="@+id/numberOfVideosText"
-        android:layout_marginLeft="45dp"
-        android:layout_marginTop="60dp"
-        android:textColor="@color/black"/>
+        android:id="@+id/tablelayout_top"
+        android:gravity="center">
 
-    <ImageView
-        android:layout_width="50px"
-        android:layout_height="50px"
-        android:id="@+id/contestsWonIcon"
-        android:src="@mipmap/ic_contests_won"
-        android:layout_alignTop="@+id/numberOfVideosIcon"
-        android:layout_toRightOf="@+id/numberOfVideosIcon"
-        android:layout_toEndOf="@+id/numberOfVideosIcon"
-        android:layout_marginTop="24.5dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:id="@+id/top"
+            android:orientation="horizontal">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="5"
-        android:id="@+id/contestsWonText"
-        android:layout_marginTop="60dp"
-        android:layout_marginLeft="102dp"
-        android:textColor="@color/black"/>
 
-    <ImageView
-        android:layout_width="50px"
-        android:layout_height="50px"
-        android:id="@+id/fansIcon"
-        android:src="@mipmap/ic_fans"
-        android:layout_marginRight="101dp"
-        android:layout_marginEnd="101dp"
-        android:layout_alignTop="@+id/contestsWonIcon"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="50dp"
+                android:id="@+id/numberOfVideosIcon"
+                android:src="@mipmap/ic_number_of_videos"
+                android:gravity="center"
+                android:layout_weight="1" />
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="50dp"
+                android:id="@+id/contestsWonIcon"
+                android:src="@mipmap/ic_contests_won"
+                android:gravity="center"
+                android:layout_weight="1" />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/averageRatesIcon"
-        android:src="@mipmap/ic_start_full"
-        android:layout_alignBottom="@+id/fansIcon"
-        android:layout_toRightOf="@+id/fansText"
-        android:layout_toEndOf="@+id/fansText"
-        android:layout_marginLeft="18dp"
-        android:layout_marginStart="18dp" />
+            <ImageButton
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:id="@+id/profilePictureInProfile"
+                android:src="@mipmap/ic_profile_picture"
+                android:background="@android:color/transparent"
+                android:layout_gravity="center"
+                android:layout_weight="1" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="456"
-        android:id="@+id/fansText"
-        android:layout_below="@+id/fansIcon"
-        android:layout_alignLeft="@+id/fansIcon"
-        android:layout_alignStart="@+id/fansIcon"
-        android:layout_marginTop="0.5dp"
-        android:textColor="@color/black"/>
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="50dp"
+                android:id="@+id/fansIcon"
+                android:src="@mipmap/ic_fans"
+                android:gravity="center"
+                android:layout_weight="1" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="4.5"
-        android:id="@+id/ratesTextProfile"
-        android:textColor="@color/black"
-        android:layout_below="@+id/averageRatesIcon"
-        android:layout_alignLeft="@+id/averageRatesIcon"
-        android:layout_alignStart="@+id/averageRatesIcon" />
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="50dp"
+                android:id="@+id/averageRatesIcon"
+                android:src="@mipmap/ic_start_full"
+                android:gravity="center"
+                android:layout_weight="1" />
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:id="@+id/becomeAFan"
-        android:src="@mipmap/ic_become_a_fan"
-        android:layout_below="@+id/contestsWonText"
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:orientation="horizontal"
+            android:id="@+id/all_the_scors"
+            android:layout_below="@+id/top"
+            android:layout_alignRight="@+id/descriptionProfile"
+            android:layout_alignEnd="@+id/descriptionProfile"
+           >
+
+            <TextView
+                android:layout_width="35dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="12562"
+                android:id="@+id/numberOfVideosText"
+                android:textColor="@color/black"
+                android:layout_gravity="center_vertical"
+                android:gravity="center"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="35dp"
+                android:layout_height="20dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="4.5"
+                android:id="@+id/ratesTextProfile"
+                android:textColor="@color/black"
+                android:layout_below="@+id/top"
+                android:gravity="center"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="20dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Bra"
+                android:id="@+id/usernameTextProfile"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="35dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="456"
+                android:id="@+id/fansText"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="35dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="5"
+                android:id="@+id/contestsWonText"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:layout_weight="1" />
+        </LinearLayout>
+    </TableLayout>
+
+
+    <Button
+        android:id="@+id/be_a_fan"
+        android:text="@string/become_a_fan"
+        android:textColor="#FFFFFF"
+        android:textSize="22sp"
+        android:layout_width="186dp"
+        android:layout_height="29dp"
+        android:background="@drawable/custom_button_become_a_fan"
+        android:layout_above="@+id/descriptionProfile"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginBottom="9dp" />
+
 
     <ImageView
-        android:layout_width="350dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/separatorProfile"
         android:src="@drawable/separator"
-        android:layout_alignBottom="@+id/becomeAFan"
-        android:layout_alignLeft="@+id/numberOfVideosIcon"
-        android:layout_alignStart="@+id/numberOfVideosIcon"
-        android:layout_marginBottom="17dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Brajansaraci"
-        android:id="@+id/usernameTextProfile"
-        android:textColor="@color/black"
-        android:layout_alignTop="@+id/becomeAFan"
-        android:layout_centerHorizontal="true" />
-
-    <ImageButton
-        android:layout_width="150px"
-        android:layout_height="150px"
-        android:id="@+id/profilePictureInProfile"
-        android:src="@mipmap/ic_profile_picture"
-        android:layout_alignBottom="@+id/contestsWonText"
+        android:layout_below="@+id/tablelayout_top"
         android:layout_centerHorizontal="true"
-        android:background="@android:color/transparent"/>
+        android:layout_marginTop="49dp" />
+
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="19, Lyon Love to make music covers"
@@ -167,8 +186,13 @@
         android:singleLine="false"
         android:maxWidth="150dp"
         android:textSize="11dp"
-        android:layout_alignTop="@+id/separatorProfile"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="3dp"/>
+        android:layout_marginTop="9dp"
+        android:gravity="center"
+        android:layout_below="@+id/separatorProfile"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+
+
 
 </RelativeLayout>

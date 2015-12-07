@@ -113,6 +113,7 @@ public class Profile extends AppCompatActivity implements NavigationView.OnNavig
         videosText.setText(videos);
         contestsText.setText(contests);
         bio.setText(name);
+
     }
 
     public boolean onNavigationItemSelected(MenuItem item) {
