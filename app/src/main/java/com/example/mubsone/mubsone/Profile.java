@@ -4,6 +4,7 @@ import org.json.*;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -16,18 +17,28 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mubsone.mubsone.Blur.BlurActionBarDrawerToggle;
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.common.api.GoogleApiClient;
 
 public class Profile extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
         AdapterView.OnItemClickListener,
         HttpAsyncResponse {
-    private TextView title_toolbar;
     private BlurActionBarDrawerToggle mDrawerToggle;
-    private TextView fansText, usernameText, ratingsText,videosText, contestsText, bio ;
+    private TextView title_toolbar, fansText, usernameText, ratingsText, videosText, contestsText, bio;
+    private ImageView number_video_imageview, contest_imageview, fans_imageview, star_imageview;
+    private ImageButton profil_imageview;
+    private Button become_a_fan_button;
+    private Boolean butoon_fan_clicked;
+    private GoogleApiClient client;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +55,8 @@ public class Profile extends AppCompatActivity implements NavigationView.OnNavig
 
         toolbar.setVisibility(View.VISIBLE);
         //arsing the font for the title toolbar
-        title_toolbar=(TextView)toolbar.findViewById(R.id.toolbarTitleProfile);
-        Typeface MyCustomFont = Typeface.createFromAsset(getAssets(),"fonts/dear_joe.ttf");
+        title_toolbar = (TextView) toolbar.findViewById(R.id.toolbarTitleProfile);
+        Typeface MyCustomFont = Typeface.createFromAsset(getAssets(), "fonts/dear_joe.ttf");
         title_toolbar.setTypeface(MyCustomFont);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_profile);
@@ -64,49 +75,48 @@ public class Profile extends AppCompatActivity implements NavigationView.OnNavig
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_profile);
         navigationView.setNavigationItemSelectedListener(this);
 
-        GridView myGrid = (GridView)findViewById(R.id.gridViewProfile);
+        GridView myGrid = (GridView) findViewById(R.id.gridViewProfile);
         myGrid.setAdapter(new ProfileGridAdapter(this));
         myGrid.setOnItemClickListener(this);
 
 
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
-    public void onItemClick(AdapterView<?> adapterView, View view, int position, long l){
+    public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
         Toast.makeText(this, adapterView.getItemAtPosition(position).toString(), Toast.LENGTH_SHORT).show();
     }
 
-    public void httpRequestProcessFinish(String result)
-    {
+    public void httpRequestProcessFinish(String result) {
         Log.i("Res", result);
-        String fansNumber   = null;
-        String username     = null;
-        String rating       = null;
-        String videos       = null;
-        String contests     = null;
-        String name         = null;
+        String fansNumber = null;
+        String username = null;
+        String rating = null;
+        String videos = null;
+        String contests = null;
+        String name = null;
 
-        try
-        {
+        try {
             JSONObject jsonResponse = new JSONObject(result);
 
-            fansNumber  = jsonResponse.getString("fans");
-            username    = jsonResponse.getString("username");
-            rating      = jsonResponse.getString("rating");
-            videos      = jsonResponse.getString("videos");
-            contests    = jsonResponse.getString("contests");
-            name        = jsonResponse.getString("first_name") + jsonResponse.getString("last_name");
-        }
-        catch(JSONException e)
-        {
+            fansNumber = jsonResponse.getString("fans");
+            username = jsonResponse.getString("username");
+            rating = jsonResponse.getString("rating");
+            videos = jsonResponse.getString("videos");
+            contests = jsonResponse.getString("contests");
+            name = jsonResponse.getString("first_name") + jsonResponse.getString("last_name");
+        } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        fansText       = (TextView) findViewById(R.id.fansText);
-        usernameText   = (TextView) findViewById(R.id.usernameTextProfile);
-        ratingsText    = (TextView) findViewById(R.id.ratesTextProfile);
-        videosText     = (TextView) findViewById(R.id.numberOfVideosText);
-        contestsText   = (TextView) findViewById(R.id.contestsWonText);
-        bio            = (TextView) findViewById(R.id.descriptionProfile);
+        fansText = (TextView) findViewById(R.id.fansText);
+        usernameText = (TextView) findViewById(R.id.usernameTextProfile);
+        ratingsText = (TextView) findViewById(R.id.ratesTextProfile);
+        videosText = (TextView) findViewById(R.id.numberOfVideosText);
+        contestsText = (TextView) findViewById(R.id.contestsWonText);
+        bio = (TextView) findViewById(R.id.descriptionProfile);
 
         fansText.setText("Andy");
         usernameText.setText(username);
@@ -118,6 +128,8 @@ public class Profile extends AppCompatActivity implements NavigationView.OnNavig
 
         //change the font for the page
         change_fonts();
+        //show the text description under the icons
+        show_text_description();
     }
 
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -165,5 +177,65 @@ public class Profile extends AppCompatActivity implements NavigationView.OnNavig
         ratingsText.setTypeface(MyCustomFont);
         videosText.setTypeface(MyCustomFont);
         contestsText.setTypeface(MyCustomFont);
+    }
+
+    public void show_text_description() {
+        number_video_imageview = (ImageView) findViewById(R.id.numberOfVideosIcon);
+        contest_imageview = (ImageView) findViewById(R.id.contestsWonIcon);
+        profil_imageview = (ImageButton) findViewById(R.id.profilePictureInProfile);
+        fans_imageview = (ImageView) findViewById(R.id.fansIcon);
+        star_imageview = (ImageView) findViewById(R.id.averageRatesIcon);
+        become_a_fan_button = (Button) findViewById(R.id.btn_be_a_fan);
+        number_video_imageview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(Profile.this, "Test_Video", Toast.LENGTH_SHORT).show();
+            }
+        });
+        contest_imageview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(Profile.this, "Test_Contest", Toast.LENGTH_SHORT).show();
+            }
+        });
+        profil_imageview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(Profile.this, "Test_Profill", Toast.LENGTH_SHORT).show();
+            }
+        });
+        fans_imageview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(Profile.this, "Test_Fans", Toast.LENGTH_SHORT).show();
+            }
+        });
+        star_imageview.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(Profile.this, "Test_Stars", Toast.LENGTH_SHORT).show();
+            }
+        });
+        //for now we will take false but for the future we need to put in the value into the server
+        butoon_fan_clicked=false;
+        become_a_fan_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (butoon_fan_clicked){
+                    become_a_fan_button.setText(getResources().getString(R.string.become_a_fan));
+                    become_a_fan_button.setBackgroundResource(R.drawable.custom_button_become_a_fan);
+                    Toast.makeText(Profile.this , "Test_You just Unsubscribe", Toast.LENGTH_SHORT).show();
+                    butoon_fan_clicked=false;
+                }else{
+                    become_a_fan_button.setText(getResources().getString(R.string.you_are_a_fan));
+                    become_a_fan_button.setBackgroundResource(R.drawable.custom_button_you_are_a_fan);
+                    Toast.makeText(Profile.this , "Test_You just become a fan", Toast.LENGTH_SHORT).show();
+                    butoon_fan_clicked=true;
+                }
+
+            }
+        });
+
     }
 }
